@@ -49,7 +49,7 @@ static void	down_heap(t_heap *heap)
 		child = index * 2;
 		if (child + 1 < heap->end
 			&& heap->cmp(heap->data[child], heap->data[child + 1]) == 1)
-				child += 1;
+			child += 1;
 		if (heap->cmp(heap->data[child], heap->data[index]) == -1)
 		{
 			swap(heap, child, index);

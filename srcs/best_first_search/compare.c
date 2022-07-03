@@ -13,10 +13,10 @@
 #include "push_swap.h"
 #include "bfs.h"
 
-int priority_comparator(const void *ptr1, const void *ptr2)
+int	priority_comparator(const void *ptr1, const void *ptr2)
 {
-	t_node *node1;
-	t_node *node2;
+	t_node	*node1;
+	t_node	*node2;
 
 	node1 = (t_node *)ptr1;
 	node2 = (t_node *)ptr2;

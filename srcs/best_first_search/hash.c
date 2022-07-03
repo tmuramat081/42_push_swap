@@ -17,7 +17,7 @@ size_t	convert_deque_to_hash(t_deque *deque)
 {
 	size_t	hash;
 	size_t	len;
-	t_data		*itr;
+	t_data	*itr;
 
 	if (ft_deque_is_empty(deque) == true)
 		return (0);
@@ -34,7 +34,7 @@ size_t	convert_deque_to_hash(t_deque *deque)
 
 size_t	hash_node(const void *ptr)
 {
-	t_node *node;
+	t_node	*node;
 	size_t	hash;
 
 	node = (t_node *)ptr;

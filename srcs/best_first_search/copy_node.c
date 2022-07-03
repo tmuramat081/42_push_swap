@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   copy_node.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/03 13:40:45 by tmuramat          #+#    #+#             */
+/*   Updated: 2022/07/03 13:40:45 by tmuramat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include "operation.h"
 #include "bfs.h"
 
 static	t_deque	*deque_copy(t_deque *src)
 {
-	t_deque *dst;
+	t_deque	*dst;
 	size_t	len;
 	t_data	*itr;
 
@@ -38,7 +50,7 @@ static	t_vector	*vector_copy(t_vector *src)
 
 t_node	*copy_node(const t_node *src)
 {
-	t_node *dst;
+	t_node	*dst;
 
 	dst = malloc(sizeof(t_node));
 	dst->stack_a = deque_copy(src->stack_a);

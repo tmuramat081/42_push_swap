@@ -44,13 +44,12 @@ void	*deque_circular_next(t_deque *stack, void *itr)
 	if (itr == stack->end)
 		itr = stack->begin;
 	return (itr);
-
 }
 
 void	clear_lics_tags(t_deque *stack)
 {
-	t_data *itr;
-	size_t 	len;
+	t_data	*itr;
+	size_t	len;
 
 	itr = ft_deque_front(stack);
 	len = ft_deque_size(stack);

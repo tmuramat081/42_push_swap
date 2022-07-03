@@ -17,7 +17,7 @@
 # include "operation.h"
 
 // ********** Best First Search Algorithm ********** //
-t_node	*bfs_optimize_operations(t_node *first_node, t_solver *solver);
+t_node	*optimize_operations(t_node *first_node, t_solver *solver);
 size_t	hash_node(const void *node);
 int		priority_comparator(const void *ptr1, const void *ptr2);
 void	evalatoruate_cost(t_node *node, t_vector *dp_tab);

@@ -13,7 +13,7 @@
 #include "operation.h"
 #include "ft_printf.h"
 
-const char	*g_op_strs[OP_END] = {
+const char		*g_op_strs[OP_END] = {
 	"sa",
 	"sb",
 	"pa",
@@ -27,7 +27,7 @@ const char	*g_op_strs[OP_END] = {
 	"rrr"
 };
 
-const t_op_arr g_op_exec = {
+const t_op_arr	g_op_exec = {
 	op_sa,
 	op_sb,
 	op_pa,

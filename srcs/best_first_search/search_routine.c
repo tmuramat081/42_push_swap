@@ -1,85 +1,97 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   search_routine.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/03 13:31:12 by tmuramat          #+#    #+#             */
+/*   Updated: 2022/07/03 13:31:12 by tmuramat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include "operation.h"
 #include "bfs.h"
 
-# define INIT_CAPACITY 128
+#define INIT_CAPACITY 128
 
-void	select_next_node(t_priqueue *tmp_open_list, t_priqueue *open_list, size_t search_width)
+void	select_next_node(t_pqueue *tmp_open, t_pqueue *open, size_t n)
 {
 	t_node	*node;
 	size_t	i;
 
 	i = 0;
-	while (i < (size_t)ft_min(search_width, ft_priority_queue_size(tmp_open_list)))
+	while (i < (size_t)ft_min(n, ft_priority_queue_size(tmp_open)))
 	{
-		node = ft_priority_queue_pop(tmp_open_list);
-		ft_priority_queue_push(open_list, node);
+		node = ft_priority_queue_pop(tmp_open);
+		ft_priority_queue_push(open, node);
 		i++;
 	}
 }
 
-void	expand_next_nodes(t_node *node, t_priqueue *open_list, t_hashset *closed_list, t_solver *solver)
+void	expand_nodes(t_node *node, t_pqueue *open, t_hashset *closed, t_solver *solver)
 {
 	t_node		*tmp_node;
-	t_priqueue	*tmp_open_list;
+	t_pqueue	*tmp_open;
 	t_operation	next_op;
 
-	tmp_open_list = ft_priority_queue_init(OP_END, &priority_comparator);
+	tmp_open = ft_priority_queue_init(OP_END, &priority_comparator);
 	next_op = OP_SA;
-	while(next_op < OP_END)
+	while (next_op < OP_END)
 	{
 		if (is_valid_operation(node, next_op) == true)
 		{
 			tmp_node = copy_node(node);
 			exec_operation(tmp_node, next_op);
-			if (ft_hashset_insert(closed_list, tmp_node) == HASHSET_SUCCESS)
+			if (ft_hashset_insert(closed, tmp_node) == HASHSET_SUCCESS)
 			{
 				tmp_node->cost = solver->evaluator(tmp_node);
-				ft_priority_queue_push(tmp_open_list, tmp_node);
+				ft_priority_queue_push(tmp_open, tmp_node);
 			}
 			else
 				delete_node(tmp_node);
 		}
 		next_op++;
 	}
-	select_next_node(tmp_open_list, open_list, solver->search_width);
-	ft_priority_queue_delete(&tmp_open_list, delete_node);
+	select_next_node(tmp_open, open, solver->search_width);
+	ft_priority_queue_delete(&tmp_open, delete_node);
 }
 
-void	evaluate_first_node(t_node *node, t_priqueue *open_list, t_hashset *closed_list, t_eval evaluator)
+void	evaluate_first_node(t_node *node, t_pqueue *open, t_hashset *closed, t_eval evaluator)
 {
 	node->cost = evaluator(node);
-	ft_priority_queue_push(open_list, node);
-	ft_hashset_insert(closed_list, node);
+	ft_priority_queue_push(open, node);
+	ft_hashset_insert(closed, node);
 }
 
-t_node *update_node(t_node *node, t_priqueue *open_list, t_hashset *closed_list)
+t_node	*update_node(t_node *node, t_pqueue *open, t_hashset *closed)
 {
-	t_node *new_node;
+	t_node	*new_node;
 
 	new_node = copy_node(node);
-	ft_priority_queue_delete(&open_list, delete_node);
-	ft_hashset_delete(&closed_list);
+	ft_priority_queue_delete(&open, delete_node);
+	ft_hashset_delete(&closed);
 	delete_node(node);
 	return (new_node);
 }
 
-t_node	*bfs_optimize_operations(t_node *init_node, t_solver *solver)
+t_node	*optimize_operations(t_node *init_node, t_solver *solver)
 {
-	t_priqueue	*open_list;
-	t_hashset	*closed_list;
+	t_pqueue	*open;
+	t_hashset	*closed;
 	t_node		*node;
 
-	open_list = ft_priority_queue_init(INIT_CAPACITY, &priority_comparator);
-	closed_list = ft_hashset_init(&hash_node);
-	evaluate_first_node(init_node, open_list, closed_list, solver->evaluator);
-	while (ft_priority_queue_is_empty(open_list) == false)
+	open = ft_priority_queue_init(INIT_CAPACITY, &priority_comparator);
+	closed = ft_hashset_init(&hash_node);
+	evaluate_first_node(init_node, open, closed, solver->evaluator);
+	while (ft_priority_queue_is_empty(open) == false)
 	{
-		node = ft_priority_queue_pop(open_list);
+		node = ft_priority_queue_pop(open);
 		print_node(node);
 		if (solver->checker(node) == true)
-			return (update_node(node, open_list, closed_list));
-		expand_next_nodes(node, open_list, closed_list, solver);
+			return (update_node(node, open, closed));
+		expand_nodes(node, open, closed, solver);
 		delete_node(node);
 	}
 	return (NULL);

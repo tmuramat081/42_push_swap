@@ -28,7 +28,7 @@ static void	*ft_memset(void *p, int c, size_t len)
 static void	hash_reinsert(t_hashset *set, size_t *new_data, size_t value)
 {
 	size_t	i;
-	
+
 	if (value == 0)
 		return ;
 	i = set->mask & (value * PRIME_1);

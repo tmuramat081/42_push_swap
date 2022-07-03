@@ -25,7 +25,7 @@ static int	hash_insert(t_hashset *set, void *data)
 {
 	size_t	value;
 	size_t	i;
-	
+
 	value = set->hash(data);
 	i = set->mask & (value * PRIME_1);
 	while (set->data[i] != 0)

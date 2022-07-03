@@ -20,9 +20,9 @@
 # include <stdio.h>
 # include <assert.h>
 # include "libft.h"
-# include "ft_deque.h" 
+# include "ft_deque.h"
 # include "ft_vector.h"
-# include "ft_priqueue.h"
+# include "ft_pqueue.h"
 # include "ft_hashset.h"
 
 typedef struct s_tab {
@@ -33,7 +33,7 @@ typedef struct s_tab {
 typedef struct s_data {
 	int		value;
 	bool	is_sorted;
-} t_data;
+}	t_data;
 
 typedef struct s_node {
 	t_deque		*stack_a;
@@ -44,10 +44,10 @@ typedef struct s_node {
 	t_vector	*ops;
 }	t_node;
 
-typedef size_t (*t_eval)(t_node *);
-typedef bool (*t_check)(t_node *);
+typedef size_t	(*t_eval)(t_node *);
+typedef bool	(*t_check)(t_node *);
 
-typedef struct t_solver	{
+typedef struct t_solver {
 	t_eval		evaluator;
 	t_check		checker;
 	size_t		search_width;
@@ -63,7 +63,6 @@ void	init_dp_table(t_tab *dp_tab, size_t size);
 void	clear_dp_table(t_tab *dp_tab);
 void	delete_dp_table(t_tab *dp_tab);
 void	clear_lics_tags(t_deque *stack);
-
 
 void	put_answer(t_vector *ops);
 void	calculate_lics(t_deque *stack, t_vector *dp_tab);

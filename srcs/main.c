@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	int		*nums;
 	size_t	size;
-	
+
 	if (ac == 1)
 		return (0);
 	size = (size_t)ac - 1;

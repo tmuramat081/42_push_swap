@@ -21,7 +21,7 @@
 
 #ifdef FOR_DEBUG
 
-static void print_data(t_data *data, int offset)
+static void	print_data(t_data *data, int offset)
 {
 	if (data->is_sorted == true)
 		ft_printf("%s", GREEN);
@@ -46,7 +46,7 @@ static void	print_two_stacks(t_deque *stack_a, t_deque *stack_b)
 		if (i < stack_b->len)
 		{
 			if (i >= stack_a->len)
-				ft_printf("               ");	
+				ft_printf("               ");
 			print_data(itr_b, 0);
 		}
 		ft_printf("\n");
@@ -56,9 +56,9 @@ static void	print_two_stacks(t_deque *stack_a, t_deque *stack_b)
 	}
 }
 
-void print_node(t_node *node)
+void	print_node(t_node *node)
 {
-	static int i;
+	static int	i;
 
 	ft_printf("\033[2J\033[1H\n");
 	ft_printf("node.%d\n", i++);
@@ -74,9 +74,11 @@ void print_node(t_node *node)
 	ft_printf("%s", DEFAULT);
 	ft_printf("g(actual):%d\n", node->ops->len);
 	ft_printf("h(expected):%d\n", node->cost - node->ops->len);
+	ft_printf("\n");
 //	usleep(100000);
 }
 #else
+
 void	print_node(t_node *node)
 {
 	(void)node;

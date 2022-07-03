@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute_lics.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
+/*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 11:54:16 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/03 10:20:44 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/07/03 13:21:38 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	dp_construct_lic(t_deque *stack, t_data *start, t_tab *dp_tab)
 	int		*idx;
 
 	idx = (int *)dp_tab->idx->data;
-	lic	= dp_tab->val->len - 1;
+	lic = dp_tab->val->len - 1;
 	itr = deque_circular_prev(stack, start);
 	i = ft_deque_size(stack) - 1;
 	while (i >= 0)
@@ -92,5 +92,5 @@ size_t	dp_calculate_lics(t_deque *stack)
 		itr = ft_deque_next(stack, itr, 1);
 	}
 	delete_dp_table(&dp_tab);
-	return	(lics);
+	return (lics);
 }

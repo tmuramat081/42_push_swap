@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operation.h"
 #include "push_swap.h"
-#include "bfs.h"
 
 #define OPS_SIZE 256
 
@@ -38,10 +36,12 @@ static t_node	*init_node(int *nums, size_t size)
 	node->ops = ft_vector_init(sizeof(t_operation), OPS_SIZE);
 	push_input_numbers(node->stack_a, nums, size);
 	node->size = size;
+	node->target = size / 2;
+	free(nums);
 	return (node);
 }
 
-void	optimize_rotation(t_node *node)
+void	opt_rotation(t_node *node)
 {
 	while (checker_3(node) == false)
 	{
@@ -55,10 +55,15 @@ void	solve_push_swap(int *nums, size_t size)
 	t_node	*node;
 
 	node = init_node(nums, size);
-	free(nums);
-	node = optimize_operations(node, &(t_solver){evaluator_1, checker_1, 4});
-	node = optimize_operations(node, &(t_solver){evaluator_2, checker_2, 4});
-	optimize_rotation(node);
+	while (true)
+	{
+		node = search_opt_operations(node, &(t_solver){evaluator_2, checker_2, 3});
+		if (node->lics_a == node->size)
+			break ;
+		node->target = (node->size - node->target) / 2;
+	}
+//	node = search_opt_operations(node, &(t_solver){evaluator_2, checker_2, 3});
+//	opt_rotation(node);
 	put_answer(node->ops);
 	delete_node(node);
 }

@@ -28,7 +28,7 @@ t_pqueue	*ft_priority_queue_init(size_t cap,
 				int (*cmp)(const void *, const void *));
 
 // ********** Deconstructor ********** //
-void		ft_priority_queue_delete(t_pqueue **queue, void(*del)(void *));
+void		ft_priority_queue_delete(t_pqueue **queue, void (*del)(void *));
 
 // ********** Modifier ********** //
 int			ft_priority_queue_push(t_pqueue *queue, void *data);

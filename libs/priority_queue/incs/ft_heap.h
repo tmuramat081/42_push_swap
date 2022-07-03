@@ -30,7 +30,7 @@ typedef struct s_heap {
 
 t_heap	*ft_heap_init(size_t cap, int (*cmp)(const void *, const void *));
 int		ft_heap_realloc(t_heap *heap);
-void	ft_heap_delete(t_heap **heap, void(*del)(void *));
+void	ft_heap_delete(t_heap **heap, void (*del)(void *));
 int		ft_heap_push(t_heap *heap, void *data);
 int		ft_heap_pop(t_heap *heap, void **data);
 

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "bfs.h"
 
 int	priority_comparator(const void *ptr1, const void *ptr2)
 {

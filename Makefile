@@ -13,11 +13,11 @@ SRCS := main.c \
 		put_answer.c \
 		delete_solver.c \
 		debug_utils.c \
-		best_first_search/search_routine.c \
-		best_first_search/prune.c \
-		best_first_search/compare.c \
-		best_first_search/hash.c \
-		best_first_search/copy_node.c \
+		graph_search/search_routine.c \
+		graph_search/prune.c \
+		graph_search/compare.c \
+		graph_search/hash.c \
+		graph_search/copy_node.c \
 		evaluator/evaluator.c \
 		evaluator/compute_lics.c \
 		evaluator/utils.c \

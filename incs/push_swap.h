@@ -17,45 +17,27 @@
 
 # include <stdlib.h>
 # include <stdbool.h>
-# include <stdio.h>
 # include <assert.h>
+# include "structure.h"
+# include "operation.h"
 # include "libft.h"
 # include "ft_deque.h"
 # include "ft_vector.h"
 # include "ft_pqueue.h"
 # include "ft_hashset.h"
 
-typedef struct s_tab {
-	t_vector	*val;
-	t_vector	*idx;
-}	t_tab;
-
-typedef struct s_data {
-	int		value;
-	bool	is_sorted;
-}	t_data;
-
-typedef struct s_node {
-	t_deque		*stack_a;
-	t_deque		*stack_b;
-	size_t		lics_a;
-	size_t		size;
-	size_t		cost;
-	t_vector	*ops;
-}	t_node;
-
-typedef size_t	(*t_eval)(t_node *);
-typedef bool	(*t_check)(t_node *);
-
-typedef struct t_solver {
-	t_eval		evaluator;
-	t_check		checker;
-	size_t		search_width;
-}	t_solver;
-
 // ********** Main solver ********** //
 int		*input_numbers(char **args, size_t n);
 void	solve_push_swap(int *nums, size_t size);
+
+// ********** Solver algorithm ********** //
+t_node	*search_opt_operations(t_node *first_node, t_solver *solver);
+size_t	hash_node(const void *node);
+int		priority_comparator(const void *ptr1, const void *ptr2);
+void	evalatoruate_cost(t_node *node, t_vector *dp_tab);
+bool	is_valid_operation(t_node *node, t_operation op);
+t_node	*copy_node(const t_node *src);
+bool	is_solved(t_node *node, t_vector *dp_tab);
 
 // ********** Dynamic Programming ********** //
 size_t	dp_calculate_lics(t_deque *stack);

@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 #include "operation.h"
-#include "bfs.h"
 
 static	t_deque	*deque_copy(t_deque *src)
 {
@@ -58,6 +57,7 @@ t_node	*copy_node(const t_node *src)
 	dst->lics_a = src->lics_a;
 	dst->size = src->size;
 	dst->cost = src->cost;
+	dst->target = src->target;
 	dst->ops = vector_copy(src->ops);
 	return (dst);
 }

@@ -8,7 +8,9 @@ SRCS := \
 	ft_heap_modifier.c \
 	ft_heap_check.c \
 	ft_heap_realloc.c \
-	ft_pqueue.c
+	ft_pqueue_init.c \
+	ft_pqueue_modifier.c \
+	ft_pqueue_check.c
 
 SRC_DIR := srcs/
 OBJ_DIR := objs/

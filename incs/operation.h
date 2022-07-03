@@ -6,14 +6,14 @@
 /*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:00:50 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/06/24 13:40:15 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/07/04 06:45:40 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OPERATION_H
 # define OPERATION_H
 
-# include "push_swap.h"
+# include "structure.h"
 
 typedef enum e_operation {
 	OP_SA,
@@ -30,7 +30,7 @@ typedef enum e_operation {
 	OP_END
 }	t_operation;
 
-typedef void(*t_op_arr[OP_END])(t_node *);
+typedef void	(*t_op_arr[OP_END])(t_node *);
 
 void	op_sa(t_node *node);
 void	op_sb(t_node *node);

@@ -6,7 +6,7 @@
 /*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 19:49:55 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/06/25 06:00:23 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/07/04 02:04:05 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,6 @@ double		ft_diff_timespec(const t_timespec *t1, const t_timespec *t2);
 int			*ft_binary_search(int *arr, size_t size, int value);
 int			*ft_upper_bound(int *arr, int n, int x);
 int			*ft_lower_bound(int *arr, int n, int x);
+double		ft_sqrt(double x);
 
 #endif

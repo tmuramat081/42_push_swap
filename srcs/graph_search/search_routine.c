@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 #include "operation.h"
-#include "bfs.h"
 
 #define INIT_CAPACITY 128
 
@@ -76,7 +75,7 @@ t_node	*update_node(t_node *node, t_pqueue *open, t_hashset *closed)
 	return (new_node);
 }
 
-t_node	*optimize_operations(t_node *init_node, t_solver *solver)
+t_node	*search_opt_operations(t_node *init_node, t_solver *solver)
 {
 	t_pqueue	*open;
 	t_hashset	*closed;

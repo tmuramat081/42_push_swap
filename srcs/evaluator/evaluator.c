@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "bfs.h"
+
+#define WEIGHTING
 
 size_t	evaluator_1(t_node *node)
 {

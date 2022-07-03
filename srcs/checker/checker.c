@@ -21,7 +21,8 @@ bool	checker_1(t_node *node)
 
 bool	checker_2(t_node *node)
 {
-	if (node->lics_a == node->size)
+	if (node->lics_a >= node->target)
+//	if (node->lics_a == node->size)
 		return (true);
 	return (false);
 }

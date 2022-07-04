@@ -10,11 +10,10 @@ SRCS_DIR := srcs/
 SRCS := main.c \
 		input_numbers.c \
 		format_numbers.c \
-		init_node.c \
+		handle_node.c \
 		solve_problem.c \
 		put_answer.c \
-		delete_solver.c \
-		debug_utils.c \
+		print_debug.c \
 		graph_search/search_routine.c \
 		graph_search/prune.c \
 		graph_search/compare.c \
@@ -22,6 +21,7 @@ SRCS := main.c \
 		graph_search/copy_node.c \
 		evaluator/evaluator.c \
 		evaluator/compute_lics.c \
+		evaluator/dp_table.c \
 		evaluator/utils.c \
 		checker/checker.c \
 		operation/op_push.c \

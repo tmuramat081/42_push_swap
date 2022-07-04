@@ -14,15 +14,17 @@
 
 typedef int	(*t_comparator)(const void *, const void *);
 
-static void	do_qsort(char *v, t_binary bin, size_t size, t_comparator cmp)
+static void	do_qsort(void *base, t_binary bin, size_t size, t_comparator cmp)
 {
 	int		i;
 	int		j;
 	void	*pivot;
+	char	*v;
 
 	if (bin.lo >= bin.hi)
 		return ;
-	pivot = v + size * (bin.lo + bin.hi) / 2;
+	v = (char *)base;
+	pivot = v + size * bin.lo;
 	i = bin.lo;
 	j = bin.hi;
 	while (true)
@@ -37,8 +39,8 @@ static void	do_qsort(char *v, t_binary bin, size_t size, t_comparator cmp)
 		i++;
 		j--;
 	}
-	do_qsort(v, (t_binary){bin.lo, i - 1}, size, cmp);
-	do_qsort(v, (t_binary){j + 1, bin.hi}, size, cmp);
+	do_qsort(base, (t_binary){bin.lo, i - 1}, size, cmp);
+	do_qsort(base, (t_binary){j + 1, bin.hi}, size, cmp);
 }
 
 void	ft_qsort(void *base, size_t n, size_t size, t_comparator cmp)
@@ -47,5 +49,5 @@ void	ft_qsort(void *base, size_t n, size_t size, t_comparator cmp)
 
 	bin.lo = 0;
 	bin.hi = n - 1;
-	do_qsort((char *)base, bin, size, cmp);
+	do_qsort(base, bin, size, cmp);
 }

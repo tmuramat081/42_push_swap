@@ -13,7 +13,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define ERR_ARGS "invalid arguments."
 
 # include <stdlib.h>
 # include <stdbool.h>
@@ -32,7 +31,7 @@ int		*format_numbers(int *arr_src, size_t n);
 t_node	*init_first_node(int *nums, size_t size);
 void	solve_push_swap(int *nums, size_t size);
 
-// ********** Solver algorithm ********** //
+// ********** Graph search (A star algorithm)********** //
 t_node	*search_opt_operations(t_node *first_node, t_solver *solver);
 size_t	hash_node(const void *node);
 int		priority_comparator(const void *ptr1, const void *ptr2);
@@ -40,15 +39,15 @@ void	evalatoruate_cost(t_node *node, t_vector *dp_tab);
 bool	is_valid_operation(t_node *node, t_operation op);
 t_node	*copy_node(const t_node *src);
 
-// ********** Dynamic Programming ********** //
+// ********** Evaluator ********** //
 size_t	dp_calculate_lics(t_deque *stack);
+void	clear_lics_tags(t_deque *stack);
+
 void	init_dp_table(t_tab *dp_tab, size_t size);
 void	clear_dp_table(t_tab *dp_tab);
 void	delete_dp_table(t_tab *dp_tab);
-void	clear_lics_tags(t_deque *stack);
 
 void	put_answer(t_vector *ops);
-void	calculate_lics(t_deque *stack, t_vector *dp_tab);
 void	print_operation(void *op);
 
 void	print_node(t_node *node);

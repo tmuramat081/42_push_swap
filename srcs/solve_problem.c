@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-#define OPS_SIZE 64
-
 static void	update_next_target(t_node *node)
 {
 	size_t	expected;

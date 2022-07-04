@@ -14,9 +14,14 @@
 
 int	cmp_ascending(const void *a, const void *b)
 {
-	if (*(int *)a > *(int *)b)
+	int *ac;
+	int *bc;
+
+	ac = (int *)a;
+	bc = (int *)b;
+	if (*ac > *bc)
 		return (1);
-	else if (*(int *)a < *(int *)b)
+	else if (*ac < *bc)
 		return (-1);
 	return (0);
 }
@@ -56,7 +61,7 @@ int	*format_numbers(int *arr_src, size_t n)
 	int	*arr_dst;
 
 	arr_cpy = ft_arraydup(arr_src, n);
-	qsort(arr_cpy, n, sizeof(int), cmp_ascending);
+	ft_qsort(arr_cpy, n, sizeof(int), cmp_ascending);
 	if (array_is_unique(arr_cpy, n) == false)
 		hundle_error(NULL);
 	arr_dst = coord_compression(arr_src, arr_cpy, n);

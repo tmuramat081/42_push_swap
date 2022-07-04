@@ -1,16 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_node.c                                        :+:      :+:    :+:   */
+/*   handle_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 22:19:24 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/04 22:19:34 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/07/04 22:40:34 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
+
+#define OPS_SIZE 64
+#define ERR_MSG "invalid arguments.\n"
+
+void	hundle_error(t_node *node)
+{
+	if (node)
+		delete_node(node);
+	ft_printf(ERR_MSG);
+	exit(EXIT_FAILURE);
+}
+
+void	delete_node(void *ptr)
+{
+	t_node	*node;
+
+	node = (t_node *)ptr;
+	ft_deque_delete(&node->stack_a);
+	ft_deque_delete(&node->stack_b);
+	ft_vector_delete(&node->ops);
+	free(node);
+}
 
 static void	push_input_numbers(t_deque *stack, int *nums, size_t size)
 {

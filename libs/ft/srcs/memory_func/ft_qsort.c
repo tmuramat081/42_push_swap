@@ -11,33 +11,44 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void	ft_qsort(void *base, size_t n, size_t size,
-			int (*cmp)(const void *, const void *))
+typedef int	(*t_comparator)(const void *, const void *);
+
+static void	do_qsort(char *v, t_binary bin, size_t size, t_comparator cmp)
 {
-	size_t			lo;
-	size_t			hi;
-	size_t			pt;
-	unsigned char	*v;
+	int		i;
+	int		j;
+	void	*pivot;
 
-	if (n <= 1)
+	if (bin.lo >= bin.hi)
 		return ;
-	lo = 0;
-	hi = n - 1;
-	pt = (lo + hi) / 2;
-	v = (unsigned char *)base;
+	pivot = v + size * ((bin.lo + bin.hi) / 2);
+	i = bin.lo;
+	j = bin.hi;
 	while (true)
 	{
-		while (cmp(&v[lo * size], &v[pt * size]) < 0)
-			lo++;
-		while (cmp(&v[hi * size], &v[pt * size]) > 0)
-			hi--;
-		if (lo >= hi)
+		while (cmp(v + size * i, pivot) < 0)
+			i++;
+		while (cmp(v + size * j, pivot) > 0)
+			j--;
+		if (i >= j)
 			break ;
-		ft_memswap(&v[lo * size], &v[hi * size], size);
-		lo++;
-		hi--;
+		ft_memswap(v + size * i, v + size * j, size);
+		i++;
+		j--;
 	}
-	qsort(&v[0], hi + 1, size, cmp);
-	qsort(&v[lo * size], n - lo, size, cmp);
+	do_qsort(v, (t_binary){bin.lo, i - 1}, size, cmp);
+	do_qsort(v, (t_binary){j + 1, bin.hi}, size, cmp);
+}
+
+void	ft_qsort(void *base, size_t n, size_t size, t_comparator cmp)
+{
+	char		*v;
+	t_binary	bin;
+
+	bin.lo = 0;
+	bin.hi = n - 1;
+	v = (char *)base;
+	do_qsort(v, bin, size, cmp);
 }

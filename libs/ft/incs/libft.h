@@ -6,7 +6,7 @@
 /*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 19:49:55 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/04 02:04:05 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/07/04 17:09:40 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ typedef struct s_vector2 {
 	int	x;
 	int	y;
 }	t_vector2;
+
+typedef struct s_binary {
+	int	lo;
+	int	hi;
+}	t_binary;
 
 typedef struct timespec	t_timespec;
 
@@ -77,6 +82,7 @@ void		*ft_calloc(size_t count, size_t size);
 size_t		ft_matrixlen(const char **src);
 char		**ft_matrixdup(const char **src);
 void		ft_free_matrix(char ***src);
+int			*ft_arraydup(int const *src, size_t len);
 void		ft_memswap(void *a, void *b, size_t size);
 void		*ft_realloc(void *ptr, size_t size);
 void		*ft_xmalloc(size_t size);

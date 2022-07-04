@@ -8,7 +8,8 @@ endif
 
 SRCS_DIR := srcs/
 SRCS := main.c \
-		input_number.c \
+		input_numbers.c \
+		format_numbers.c \
 		solve_problem.c \
 		put_answer.c \
 		delete_solver.c \

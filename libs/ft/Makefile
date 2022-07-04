@@ -32,6 +32,7 @@ MEM_SRCS = ft_bzero.c \
 		ft_free_matrix.c \
 		ft_matrixdup.c \
 		ft_matrixlen.c \
+		ft_arraydup.c \
 		ft_memchr.c \
 		ft_memcmp.c \
 		ft_memcpy.c \

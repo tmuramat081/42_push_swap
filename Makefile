@@ -10,6 +10,7 @@ SRCS_DIR := srcs/
 SRCS := main.c \
 		input_numbers.c \
 		format_numbers.c \
+		init_node.c \
 		solve_problem.c \
 		put_answer.c \
 		delete_solver.c \
@@ -28,7 +29,7 @@ SRCS := main.c \
 		operation/op_rotate.c \
 		operation/op_swap.c \
 		operation/operations.c
-	
+
 OBJS_DIR := objs/
 OBJS := ${addprefix ${OBJS_DIR},${SRCS:.c=.o}}
 DEPS := ${addprefix ${OBJS_DIR},${SRCS:.c=.d}}

@@ -29,6 +29,7 @@
 // ********** Main solver ********** //
 int		*input_numbers(char **args, size_t n);
 int		*format_numbers(int *arr_src, size_t n);
+t_node	*init_first_node(int *nums, size_t size);
 void	solve_push_swap(int *nums, size_t size);
 
 // ********** Solver algorithm ********** //

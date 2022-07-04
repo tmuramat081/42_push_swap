@@ -23,10 +23,10 @@ int	*ft_upper_bound(int *arr, int n, int x)
 	while (lo < hi)
 	{
 		mid = lo + (hi - lo) / 2;
-		if (arr[mid] < x)
-			hi = mid + 1;
+		if (x >= arr[mid])
+			lo = mid + 1;
 		else
 			hi = mid;
 	}
-	return (arr + lo);
+	return (&arr[lo]);
 }

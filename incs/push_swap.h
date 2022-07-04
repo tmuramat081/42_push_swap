@@ -38,7 +38,6 @@ int		priority_comparator(const void *ptr1, const void *ptr2);
 void	evalatoruate_cost(t_node *node, t_vector *dp_tab);
 bool	is_valid_operation(t_node *node, t_operation op);
 t_node	*copy_node(const t_node *src);
-bool	is_solved(t_node *node, t_vector *dp_tab);
 
 // ********** Dynamic Programming ********** //
 size_t	dp_calculate_lics(t_deque *stack);
@@ -54,10 +53,7 @@ void	print_operation(void *op);
 void	print_node(t_node *node);
 void	*deque_circular_next(t_deque *stack, void *i);
 void	*deque_circular_prev(t_deque *stack, void *i);
-void	print_vector(t_vector *tab);
-void	print_deque(t_deque *stack);
 
-void	push_number(t_deque *stack, int *arr);
 void	delete_node(void *ptr);
 void	hundle_error(t_node *node);
 

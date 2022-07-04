@@ -23,10 +23,10 @@ int	*ft_lower_bound(int *arr, int n, int x)
 	while (lo < hi)
 	{
 		mid = lo + (hi - lo) / 2;
-		if (x < arr[mid])
+		if (x <= arr[mid])
 			hi = mid;
 		else
 			lo = mid + 1;
 	}
-	return (arr + lo);
+	return (&arr[lo]);
 }

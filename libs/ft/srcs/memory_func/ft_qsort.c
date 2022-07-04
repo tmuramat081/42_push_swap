@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 typedef int	(*t_comparator)(const void *, const void *);
 
@@ -23,7 +22,7 @@ static void	do_qsort(char *v, t_binary bin, size_t size, t_comparator cmp)
 
 	if (bin.lo >= bin.hi)
 		return ;
-	pivot = v + size * ((bin.lo + bin.hi) / 2);
+	pivot = v + size * (bin.lo + bin.hi) / 2;
 	i = bin.lo;
 	j = bin.hi;
 	while (true)
@@ -44,11 +43,9 @@ static void	do_qsort(char *v, t_binary bin, size_t size, t_comparator cmp)
 
 void	ft_qsort(void *base, size_t n, size_t size, t_comparator cmp)
 {
-	char		*v;
 	t_binary	bin;
 
 	bin.lo = 0;
 	bin.hi = n - 1;
-	v = (char *)base;
-	do_qsort(v, bin, size, cmp);
+	do_qsort((char *)base, bin, size, cmp);
 }

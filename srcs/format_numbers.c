@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compression.c                                      :+:      :+:    :+:   */
+/*   format_numbers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/03 22:11:18 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/03 22:11:18 by tmuramat         ###   ########.fr       */
+/*   Created: 2022/07/04 18:56:13 by tmuramat          #+#    #+#             */
+/*   Updated: 2022/07/04 18:56:13 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	cmp_ascending(const void *a, const void *b)
 	return (0);
 }
 
-bool	array_is_unique(int *arr, size_t n)
+static bool	array_is_unique(int *arr, size_t n)
 {
 	size_t	i;
 
@@ -35,7 +35,7 @@ bool	array_is_unique(int *arr, size_t n)
 	return (true);
 }
 
-int	*coord_compression(int *arr_src, int *arr_cpy, size_t n)
+static int	*coord_compression(int *arr_src, int *arr_cpy, size_t n)
 {
 	int		*arr_dst;
 	size_t	i;
@@ -44,7 +44,7 @@ int	*coord_compression(int *arr_src, int *arr_cpy, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		arr_dst[i] = (int *)ft_lower_bound(arr_cpy, n, arr_src[i]) - arr_cpy;
+		arr_dst[i] = ft_lower_bound(arr_cpy, n, arr_src[i]) - arr_cpy;
 		i++;
 	}
 	return (arr_dst);
@@ -56,7 +56,7 @@ int	*format_numbers(int *arr_src, size_t n)
 	int	*arr_dst;
 
 	arr_cpy = ft_arraydup(arr_src, n);
-	ft_qsort(arr_cpy, n, sizeof(int), cmp_ascending);
+	qsort(arr_cpy, n, sizeof(int), cmp_ascending);
 	if (array_is_unique(arr_cpy, n) == false)
 		hundle_error(NULL);
 	arr_dst = coord_compression(arr_src, arr_cpy, n);

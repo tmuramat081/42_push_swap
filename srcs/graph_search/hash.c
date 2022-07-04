@@ -13,7 +13,7 @@
 #include "push_swap.h"
 #include "ft_hashset.h"
 
-size_t	convert_deque_to_hash(t_deque *deque)
+static size_t	convert_deque_to_hash(t_deque *deque)
 {
 	size_t	hash;
 	size_t	len;

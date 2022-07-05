@@ -49,7 +49,7 @@ void	select_next_node(t_pqueue *tmp_open, t_pqueue *open, size_t n)
 }
 
 void	expand_nodes(t_node *node, t_pqueue *open, t_hashset *closed,
-			t_solver *solver)
+			const t_solver *solver)
 {
 	t_node		*tmp_node;
 	t_pqueue	*tmp_open;
@@ -77,7 +77,7 @@ void	expand_nodes(t_node *node, t_pqueue *open, t_hashset *closed,
 	ft_priority_queue_delete(&tmp_open, delete_node);
 }
 
-t_node	*search_opt_operations(t_node *first_node, t_solver *solver)
+t_node	*search_opt_operations(t_node *first_node, const t_solver *solver)
 {
 	t_pqueue	*open;
 	t_hashset	*closed;

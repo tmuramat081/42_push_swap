@@ -38,6 +38,7 @@ struct s_node {
 struct s_tab {
 	t_vector	*val;
 	t_vector	*idx;
+	t_vector	*res;
 };
 
 struct s_data {

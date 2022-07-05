@@ -14,7 +14,7 @@
 
 bool	checker_forth(t_node *node)
 {
-	if (ft_deque_size(node->stack_b) > node->target)
+	if (node->lics_a > node->target)
 		return (true);
 	return (false);
 }

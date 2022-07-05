@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute_lics.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
+/*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 11:54:16 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/03 19:34:40 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/07/05 16:36:00 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 void	dp_construct_lic(t_deque *stack, t_data *start, t_tab *dp_tab)
 {
-	t_data	*itr;
-	int		lic;
-	int		i;
 	int		*idx;
+	int		lis;
+	t_data	*itr;
+	int		i;
 
+	ft_vector_clear(dp_tab->res);
 	idx = (int *)dp_tab->idx->data;
-	lic = dp_tab->val->len - 1;
+	lis = ft_vector_size(dp_tab->val) - 1;
 	itr = deque_circular_prev(stack, start);
 	i = ft_deque_size(stack) - 1;
 	while (i >= 0)
 	{
-		if (idx[i] == lic)
+		if (idx[i] == lis)
 		{
-			itr->is_sorted = true;
-			lic--;
+			ft_vector_push_back(dp_tab->res, &itr);
+			lis--;
 		}
 		itr = deque_circular_prev(stack, itr);
 		i--;
@@ -51,7 +52,7 @@ void	dp_update_table(t_tab *dp_tab, int target, size_t i)
 	*((int *)idx->data + i) = itr - (int *)val->data;
 }
 
-void	dp_calculate_lic(t_deque *stack, t_data *start, t_tab *dp_tab)
+size_t	dp_calculate_lic(t_deque *stack, t_data *start, t_tab *dp_tab)
 {
 	t_data	*itr;
 	size_t	len;
@@ -66,31 +67,45 @@ void	dp_calculate_lic(t_deque *stack, t_data *start, t_tab *dp_tab)
 		itr = deque_circular_next(stack, itr);
 		i++;
 	}
+	return (ft_vector_size(dp_tab->val));
 }
 
-size_t	dp_calculate_lics(t_deque *stack)
+size_t	dp_calculate_lics(t_deque *stack, t_tab *dp_tab)
 {
-	t_tab	dp_tab;
-	size_t	lics;
+	size_t	lic_max;
+	size_t	lic;
 	t_data	*itr;
-	int		len;
+	size_t	len;
 
-	clear_lics_tags(stack);
-	init_dp_table(&dp_tab, stack->len);
-	lics = 0;
+	lic_max = 0;
 	len = ft_deque_size(stack);
 	itr = ft_deque_front(stack);
 	while (len--)
 	{
-		clear_dp_table(&dp_tab);
-		dp_calculate_lic(stack, itr, &dp_tab);
-		if (lics < dp_tab.val->len)
+		clear_dp_table(dp_tab);
+		lic = dp_calculate_lic(stack, itr, dp_tab);
+		if (lic_max < lic)
 		{
-			lics = dp_tab.val->len;
-			dp_construct_lic(stack, itr, &dp_tab);
+			lic_max = lic;
+			dp_construct_lic(stack, itr, dp_tab);
 		}
 		itr = ft_deque_next(stack, itr, 1);
 	}
+	return (lic_max);
+}
+
+size_t	evaluate_lics(t_deque *stack, size_t lics_old)
+{
+	t_tab	dp_tab;
+	size_t	lics_new;
+
+	init_dp_table(&dp_tab, stack->len);
+	lics_new = dp_calculate_lics(stack, &dp_tab);
+	if (lics_old < lics_new)
+	{
+		clear_lics_tags(stack);
+		put_on_lics_tags(dp_tab.res);
+	}
 	delete_dp_table(&dp_tab);
-	return (lics);
+	return (lics_new);
 }

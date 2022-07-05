@@ -61,6 +61,8 @@ void	format_numbers(int **arr_src, size_t n)
 	int	*arr_dst;
 
 	arr_cpy = ft_arraydup(*arr_src, n);
+	if (!arr_cpy)
+		hundle_error(NULL);
 	ft_qsort(arr_cpy, n, sizeof(int), cmp_ascending);
 	if (array_is_unique(arr_cpy, n) == false)
 		hundle_error(NULL);

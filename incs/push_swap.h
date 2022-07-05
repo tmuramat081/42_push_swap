@@ -32,7 +32,7 @@ void	solve_push_swap(int *nums, size_t size);
 void	put_answer(t_vector *ops);
 
 // ********** Graph search (A star algorithm)********** //
-t_node	*search_opt_operations(t_node *first_node, t_solver *solver);
+t_node	*search_opt_operations(t_node *first_node, const t_solver *solver);
 int		priority_comparator(const void *ptr1, const void *ptr2);
 void	evalatoruate_cost(t_node *node, t_vector *dp_tab);
 bool	is_valid_operation(t_node *node, t_operation op);
@@ -40,8 +40,9 @@ size_t	hash_node(const void *node);
 t_node	*copy_node(const t_node *src);
 
 // ********** Evaluator ********** //
-size_t	dp_calculate_lics(t_deque *stack);
+size_t	evaluate_lics(t_deque *stack, size_t old_lics);
 void	clear_lics_tags(t_deque *stack);
+void	put_on_lics_tags(t_vector *res);
 size_t	evaluator_forth(t_node *node);
 size_t	evaluator_back(t_node *node);
 

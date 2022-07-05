@@ -76,7 +76,7 @@ void	print_node(t_node *node)
 	ft_printf("g(actual):%d\n", node->ops->len);
 	ft_printf("h(expected):%d\n", node->cost - node->ops->len);
 	ft_printf("\n");
-//	usleep(100000);
+	usleep(10);
 }
 #else
 

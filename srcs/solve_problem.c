@@ -29,10 +29,7 @@ static void	update_next_target(t_node *node)
 	size_t	expected;
 
 	expected = ft_sqrt(node->size - node->lics_a);
-	if (expected <= 5)
-		node->target = node->size;
-	else
-		node->target = node->lics_a + expected;
+	node->target = node->lics_a + expected;
 }
 
 void	opt_rotate_operations(t_node *node)
@@ -60,7 +57,7 @@ void	solve_push_swap(int *nums, size_t size)
 	node = init_first_node(nums, size);
 	while (node->size != node->lics_a)
 	{
-//		node = search_opt_operations(node, &g_dataset_forth);
+		node = search_opt_operations(node, &g_dataset_forth);
 		node = search_opt_operations(node, &g_dataset_back);
 		update_next_target(node);
 	}

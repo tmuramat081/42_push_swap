@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-bool	checker_1(t_node *node)
+bool	checker_forth(t_node *node)
 {
-	if (node->lics_a == ft_deque_size(node->stack_a))
+	if (ft_deque_size(node->stack_b) > node->target)
 		return (true);
 	return (false);
 }
 
-bool	checker_2(t_node *node)
+bool	checker_back(t_node *node)
 {
 	if (node->lics_a >= node->target)
 		return (true);

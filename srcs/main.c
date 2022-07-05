@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 		return (0);
 	size = (size_t)ac - 1;
 	nums = input_numbers(&av[1], size);
-	nums = format_numbers(nums, size);
+	format_numbers(&nums, size);
 	solve_push_swap(nums, size);
 	return (0);
 }

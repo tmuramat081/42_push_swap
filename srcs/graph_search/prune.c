@@ -49,11 +49,16 @@ bool	is_reverse_operation(t_node *node, t_operation next)
 	prev = (t_operation)ft_vector_back(node->ops);
 	if (!prev)
 		return (false);
-	if ((prev == OP_SA && next == OP_SA) || (prev == OP_SB && next == OP_SB)
-		|| (prev == OP_PA && next == OP_PB) || (prev == OP_PB && next == OP_PA)
-		|| (prev == OP_RA && next == OP_RRA) || (prev == OP_RRA && next == OP_RA)
-		|| (prev == OP_RB && next == OP_RRB) || (prev == OP_RRB && next == OP_RB)
-		|| (prev == OP_SS && next == OP_SS) || (prev == OP_RR && next == OP_RRR)
+	if ((prev == OP_SA && next == OP_SA)
+		|| (prev == OP_SB && next == OP_SB)
+		|| (prev == OP_PA && next == OP_PB)
+		|| (prev == OP_PB && next == OP_PA)
+		|| (prev == OP_RA && next == OP_RRA)
+		|| (prev == OP_RRA && next == OP_RA)
+		|| (prev == OP_RB && next == OP_RRB)
+		|| (prev == OP_RRB && next == OP_RB)
+		|| (prev == OP_SS && next == OP_SS)
+		|| (prev == OP_RR && next == OP_RRR)
 		|| (prev == OP_RRR && prev == OP_RR))
 		return (true);
 	return (false);

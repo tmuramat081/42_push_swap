@@ -23,13 +23,13 @@ static void	update_next_target(t_node *node)
 		node->target = node->lics_a + expected;
 }
 
-void	opt_rotation(t_node *node)
+void	opt_rotate_operation(t_node *node)
 {
 	t_data		*top_a;
 	t_operation	op;
 
 	top_a = ft_deque_front(node->stack_a);
-	if (node->size / 2 > (size_t)top_a->value)
+	if (node->size / 2 >= (size_t)top_a->value)
 		op = OP_RRA;
 	else
 		op = OP_RA;
@@ -48,10 +48,11 @@ void	solve_push_swap(int *nums, size_t size)
 	node = init_first_node(nums, size);
 	while (node->size != node->lics_a)
 	{
-		node = search_opt_operations(node, &(t_solver){evaluator_2, checker_2, 3});
+		node = search_opt_operations(node, &(t_solver){evaluator_forth, checker_forth, 3});
+		node = search_opt_operations(node, &(t_solver){evaluator_back, checker_back, 3});
 		update_next_target(node);
 	}
-	opt_rotation(node);
+	opt_rotate_operation(node);
 	put_answer(node->ops);
 	delete_node(node);
 }

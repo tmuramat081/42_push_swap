@@ -6,7 +6,7 @@
 /*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:00:50 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/04 06:45:40 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/07/05 09:47:37 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	op_rrb(t_node *node);
 void	op_ss(t_node *node);
 void	op_rr(t_node *node);
 void	op_rrr(t_node *node);
+void	print_operation(void	*ptr);
 void	exec_operation(t_node *node, t_operation op);
 
 #endif

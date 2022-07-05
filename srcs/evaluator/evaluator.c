@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-#define WEIGHTING
+#define WEIGHTING 2.0
 
-size_t	evaluator_1(t_node *node)
+size_t	evaluator_forth(t_node *node)
 {
 	size_t	cost_g;
 	size_t	cost_h;
@@ -22,10 +22,10 @@ size_t	evaluator_1(t_node *node)
 	node->lics_a = dp_calculate_lics(node->stack_a);
 	cost_h = ft_deque_size(node->stack_a) - node->lics_a;
 	cost_g = ft_vector_size(node->ops);
-	return (cost_g + (double)cost_h * 5.0);
+	return (cost_g + (double)cost_h * WEIGHTING);
 }
 
-size_t	evaluator_2(t_node *node)
+size_t	evaluator_back(t_node *node)
 {
 	size_t	cost_g;
 	size_t	cost_h;
@@ -33,5 +33,5 @@ size_t	evaluator_2(t_node *node)
 	node->lics_a = dp_calculate_lics(node->stack_a);
 	cost_h = node->size - node->lics_a;
 	cost_g = ft_vector_size(node->ops);
-	return (cost_g + (double)cost_h * 5.0);
+	return (cost_g + (double)cost_h * WEIGHTING);
 }

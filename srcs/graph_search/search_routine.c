@@ -15,6 +15,25 @@
 
 #define INIT_CAPACITY 128
 
+void	evaluate_first_node(t_node *node, t_pqueue *open, t_hashset *closed,
+			t_eval evaluator)
+{
+	node->cost = evaluator(node);
+	ft_priority_queue_push(open, node);
+	ft_hashset_insert(closed, node);
+}
+
+t_node	*update_node(t_node *node, t_pqueue *open, t_hashset *closed)
+{
+	t_node	*new_node;
+
+	new_node = copy_node(node);
+	ft_priority_queue_delete(&open, delete_node);
+	ft_hashset_delete(&closed);
+	delete_node(node);
+	return (new_node);
+}
+
 void	select_next_node(t_pqueue *tmp_open, t_pqueue *open, size_t n)
 {
 	t_node	*node;
@@ -29,7 +48,8 @@ void	select_next_node(t_pqueue *tmp_open, t_pqueue *open, size_t n)
 	}
 }
 
-void	expand_nodes(t_node *node, t_pqueue *open, t_hashset *closed, t_solver *solver)
+void	expand_nodes(t_node *node, t_pqueue *open, t_hashset *closed,
+			t_solver *solver)
 {
 	t_node		*tmp_node;
 	t_pqueue	*tmp_open;
@@ -57,25 +77,7 @@ void	expand_nodes(t_node *node, t_pqueue *open, t_hashset *closed, t_solver *sol
 	ft_priority_queue_delete(&tmp_open, delete_node);
 }
 
-void	evaluate_first_node(t_node *node, t_pqueue *open, t_hashset *closed, t_eval evaluator)
-{
-	node->cost = evaluator(node);
-	ft_priority_queue_push(open, node);
-	ft_hashset_insert(closed, node);
-}
-
-t_node	*update_node(t_node *node, t_pqueue *open, t_hashset *closed)
-{
-	t_node	*new_node;
-
-	new_node = copy_node(node);
-	ft_priority_queue_delete(&open, delete_node);
-	ft_hashset_delete(&closed);
-	delete_node(node);
-	return (new_node);
-}
-
-t_node	*search_opt_operations(t_node *init_node, t_solver *solver)
+t_node	*search_opt_operations(t_node *first_node, t_solver *solver)
 {
 	t_pqueue	*open;
 	t_hashset	*closed;
@@ -83,7 +85,7 @@ t_node	*search_opt_operations(t_node *init_node, t_solver *solver)
 
 	open = ft_priority_queue_init(INIT_CAPACITY, &priority_comparator);
 	closed = ft_hashset_init(&hash_node);
-	evaluate_first_node(init_node, open, closed, solver->evaluator);
+	evaluate_first_node(first_node, open, closed, solver->evaluator);
 	while (ft_priority_queue_is_empty(open) == false)
 	{
 		node = ft_priority_queue_pop(open);

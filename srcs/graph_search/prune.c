@@ -67,9 +67,14 @@ bool	is_reverse_operation(t_node *node, t_operation next)
 bool	is_locked_operation(t_node *node, t_operation next)
 {
 	t_data	*top_a;
+	t_data	*second_a;
 
 	top_a = ft_deque_front(node->stack_a);
+	second_a = ft_deque_next(node->stack_a, top_a, 1);
 	if (top_a->is_sorted == true && next == OP_PA)
+		return (true);
+	else if (top_a->is_sorted == true && second_a->is_sorted == true
+		&& next == OP_SA)
 		return (true);
 	return (false);
 }

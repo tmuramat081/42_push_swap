@@ -15,13 +15,13 @@
 const t_solver	g_dataset_forth = {
 	.evaluator = evaluator_forth,
 	.checker = checker_forth,
-	.search_width = 3
+	.search_width = 4
 };
 
 const t_solver	g_dataset_back = {
 	.evaluator = evaluator_back,
 	.checker = checker_back,
-	.search_width = 3
+	.search_width = 4
 };
 
 static void	update_next_target(t_node *node)
@@ -55,9 +55,9 @@ void	solve_push_swap(int *nums, size_t size)
 	t_node	*node;
 
 	node = init_first_node(nums, size);
+	node = search_opt_operations(node, &g_dataset_forth);
 	while (node->size != node->lics_a)
 	{
-		node = search_opt_operations(node, &g_dataset_forth);
 		node = search_opt_operations(node, &g_dataset_back);
 		update_next_target(node);
 	}

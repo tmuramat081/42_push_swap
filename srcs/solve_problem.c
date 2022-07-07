@@ -55,9 +55,9 @@ void	solve_push_swap(int *nums, size_t size)
 	t_node	*node;
 
 	node = init_first_node(nums, size);
-	node = search_opt_operations(node, &g_dataset_forth);
 	while (node->size != node->lics_a)
 	{
+		node = search_opt_operations(node, &g_dataset_forth);
 		node = search_opt_operations(node, &g_dataset_back);
 		update_next_target(node);
 	}

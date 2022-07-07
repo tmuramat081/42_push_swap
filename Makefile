@@ -15,6 +15,7 @@ SRCS := main.c \
 		put_answer.c \
 		print_debug.c \
 		graph_search/search_routine.c \
+		graph_search/evaluate_node.c \
 		graph_search/prune.c \
 		graph_search/compare.c \
 		graph_search/hash.c \

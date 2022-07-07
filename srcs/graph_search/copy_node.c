@@ -55,7 +55,6 @@ t_node	*copy_node(const t_node *src)
 	dst->stack_a = deque_copy(src->stack_a);
 	dst->stack_b = deque_copy(src->stack_b);
 	dst->lics_a = src->lics_a;
-	dst->lics_b = src->lics_b;
 	dst->size = src->size;
 	dst->cost = src->cost;
 	dst->target = src->target;

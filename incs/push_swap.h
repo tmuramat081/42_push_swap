@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <assert.h>
+# include <time.h>
 # include "structure.h"
 # include "operation.h"
 # include "libft.h"
@@ -33,6 +34,11 @@ void	put_answer(t_vector *ops);
 
 // ********** Graph search (A star algorithm)********** //
 t_node	*search_opt_operations(t_node *first_node, const t_solver *solver);
+void	evaluate_first_node(t_node *node, t_pqueue *open, t_hashset *closed,
+			t_eval evaluator);
+void	evaluate_next_node(t_node *tmp_node, t_pqueue *tmp_open,
+			t_hashset *closed, t_eval evaluator);
+
 int		priority_comparator(const void *ptr1, const void *ptr2);
 void	evalatoruate_cost(t_node *node, t_vector *dp_tab);
 bool	is_valid_operation(t_node *node, t_operation op);

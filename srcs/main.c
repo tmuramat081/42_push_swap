@@ -16,12 +16,17 @@ int	main(int ac, char **av)
 {
 	int		*nums;
 	size_t	size;
+	clock_t	s;
+	clock_t	e;
 
 	if (ac == 1)
 		return (0);
+	s = clock();
 	size = (size_t)ac - 1;
 	nums = input_numbers(&av[1], size);
 	format_numbers(&nums, size);
 	solve_push_swap(nums, size);
+	e = clock();
+	printf("total time:%lf\n", (e - s) / (double)CLOCKS_PER_SEC);
 	return (0);
 }

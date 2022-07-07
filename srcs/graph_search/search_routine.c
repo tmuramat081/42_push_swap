@@ -15,14 +15,6 @@
 
 #define INIT_CAPACITY 128
 
-void	evaluate_first_node(t_node *node, t_pqueue *open, t_hashset *closed,
-			t_eval evaluator)
-{
-	node->cost = evaluator(node);
-	ft_priority_queue_push(open, node);
-	ft_hashset_insert(closed, node);
-}
-
 t_node	*update_node(t_node *node, t_pqueue *open, t_hashset *closed)
 {
 	t_node	*new_node;
@@ -63,13 +55,7 @@ void	expand_nodes(t_node *node, t_pqueue *open, t_hashset *closed,
 		{
 			tmp_node = copy_node(node);
 			exec_operation(tmp_node, next_op);
-			if (ft_hashset_insert(closed, tmp_node) == HASHSET_SUCCESS)
-			{
-				tmp_node->cost = solver->evaluator(tmp_node);
-				ft_priority_queue_push(tmp_open, tmp_node);
-			}
-			else
-				delete_node(tmp_node);
+			evaluate_next_node(tmp_node, tmp_open, closed, solver->evaluator);
 		}
 		next_op++;
 	}

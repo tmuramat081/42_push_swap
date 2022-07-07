@@ -29,7 +29,6 @@ struct s_node {
 	t_deque		*stack_a;
 	t_deque		*stack_b;
 	size_t		lics_a;
-	size_t		lics_b;
 	size_t		size;
 	size_t		cost;
 	size_t		target;

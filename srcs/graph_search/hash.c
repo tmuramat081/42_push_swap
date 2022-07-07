@@ -39,6 +39,7 @@ size_t	hash_node(const void *ptr)
 
 	node = (t_node *)ptr;
 	hash = convert_deque_to_hash(node->stack_a);
+	hash <<= 5;
 	hash += convert_deque_to_hash(node->stack_b);
 	return (hash);
 }

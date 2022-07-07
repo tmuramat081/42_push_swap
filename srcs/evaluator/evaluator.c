@@ -32,6 +32,6 @@ size_t	evaluator_back(t_node *node)
 
 	node->lics_a = evaluate_lics(node->stack_a, node->lics_a);
 	cost_h = node->size - node->lics_a;
-	cost_g = ft_vector_size(node->ops) - node->lics_a;
+	cost_g = ft_vector_size(node->ops);
 	return (cost_g + (double)cost_h * WEIGHTING);
 }

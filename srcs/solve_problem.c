@@ -15,7 +15,7 @@
 const t_solver	g_dataset_forth = {
 	.evaluator = evaluator_forth,
 	.checker = checker_forth,
-	.search_width = 4
+	.search_width = 11
 };
 
 const t_solver	g_dataset_back = {
@@ -28,7 +28,7 @@ static void	update_next_target(t_node *node)
 {
 	size_t	expected;
 
-	expected = ft_sqrt(node->size - node->lics_a);
+	expected = ft_sqrt(node->size - node->lics_a) * 2;
 	node->target = node->lics_a + expected;
 }
 

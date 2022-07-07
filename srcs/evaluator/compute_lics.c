@@ -6,7 +6,7 @@
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 11:54:16 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/05 16:36:00 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:25:08 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,32 @@ size_t	dp_calculate_lics(t_deque *stack, t_tab *dp_tab)
 	}
 	return (lic_max);
 }
+
+/*
+size_t cound_unsorted(t_deque *stack)
+{
+	t_data* itr;
+	size_t	len;
+	size_t	i;
+	size_t	j;
+	size_t 	ans;
+
+	ans = 0;
+	itr = ft_deque_front(stack);
+	len = ft_deque_size(stack);
+	while(len--)
+	{
+		if(itr->is_sorted == false)
+		{
+			ans += i - j;
+			j++;
+		}
+		i++;
+		itr = ft_deque_next(stack, itr, 1);
+	}
+	return(ans);
+}
+*/
 
 size_t	evaluate_lics(t_deque *stack, size_t lics_old)
 {

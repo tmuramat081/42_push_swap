@@ -28,7 +28,8 @@ static void	update_next_target(t_node *node)
 {
 	size_t	expected;
 
-	expected = ft_sqrt(node->size - node->lics_a) * 2;
+//	expected = ft_sqrt(node->size - node->lics_a);
+	expected = 1;
 	node->target = node->lics_a + expected;
 }
 

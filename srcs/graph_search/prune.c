@@ -67,18 +67,16 @@ bool	is_reverse_operation(t_node *node, t_operation next)
 bool	is_locked_operation(t_node *node, t_operation next)
 {
 	t_data	*top_a;
-	t_data	*second_a;
-	t_data	*bottom_a;
+//	t_data	*bottom_a;
+//	t_data	*top_b;
 
 	top_a = ft_deque_front(node->stack_a);
-	second_a = ft_deque_next(node->stack_a, top_a, 1);
-	bottom_a = ft_deque_back(node->stack_a);
-	if (top_a->is_sorted == true && next == OP_PA)
+//	bottom_a = ft_deque_back(node->stack_a);
+//	top_b = ft_deque_front(node->stack_b);
+	if (next == OP_PA && top_a->is_sorted == true)
 		return (true);
-	else if (second_a->value - top_a->value == 1 && next == OP_SA)
-		return (true);
-	else if (top_a->value - bottom_a->value == 1 && next == OP_PB)
-		return (true);
+//	if (next == OP_PB && !(bottom_a->value < top_b->value && top_b->value < top_a->value))
+//		return (true);
 	return (false);
 }
 
@@ -88,7 +86,7 @@ bool	is_valid_operation(t_node *node, t_operation op)
 		return (false);
 	else if (is_empty_operation(node, op) == true)
 		return (false);
-//	else if (is_locked_operation(node, op) == true)
-//		return (false);
+	else if (is_locked_operation(node, op) == true)
+		return (false);
 	return (true);
 }

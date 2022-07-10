@@ -35,12 +35,14 @@ struct s_node {
 	t_vector	*ops;
 };
 
+
+// For Dynamic Programming. it is utilized to calculate LICS (Longest Increasing Circular Subsequense). 
 struct s_tab {
 	t_vector	*val;
 	t_vector	*idx;
-	t_vector	*res;
 };
 
+// For each elements of stack_A or stack_B. the "value" is compressed number.
 struct s_data {
 	int		value;
 	bool	is_sorted;

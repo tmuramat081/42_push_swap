@@ -22,6 +22,7 @@ SRCS := main.c \
 		graph_search/copy_node.c \
 		evaluator/evaluator.c \
 		evaluator/compute_lics.c \
+		evaluator/compute_min_swap.c \
 		evaluator/dp_table.c \
 		evaluator/utils.c \
 		checker/checker.c \

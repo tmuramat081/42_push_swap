@@ -46,11 +46,13 @@ size_t	hash_node(const void *node);
 t_node	*copy_node(const t_node *src);
 
 // ********** Evaluator ********** //
-size_t	evaluate_lics(t_deque *stack, size_t old_lics);
+size_t	evaluate_lics(t_deque *stack);
 void	clear_lics_tags(t_deque *stack);
 void	put_on_lics_tags(t_vector *res);
 size_t	evaluator_forth(t_node *node);
 size_t	evaluator_back(t_node *node);
+
+size_t	evaluate_min_swaps(t_node *node);
 
 void	init_dp_table(t_tab *dp_tab, size_t size);
 void	clear_dp_table(t_tab *dp_tab);
@@ -60,7 +62,7 @@ void	delete_dp_table(t_tab *dp_tab);
 bool	checker_forth(t_node *node);
 bool	checker_back(t_node *node);
 
-// ********** Node utils **********/
+// ********** Node utils ********** //
 void	delete_node(void *ptr);
 void	hundle_error(t_node *node);
 void	print_node(t_node *node);

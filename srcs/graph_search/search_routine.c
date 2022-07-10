@@ -15,7 +15,7 @@
 
 #define INIT_CAPACITY 128
 
-t_node	*update_node(t_node *node, t_pqueue *open, t_hashset *closed)
+static t_node	*update_node(t_node *node, t_pqueue *open, t_hashset *closed)
 {
 	t_node	*new_node;
 
@@ -26,7 +26,7 @@ t_node	*update_node(t_node *node, t_pqueue *open, t_hashset *closed)
 	return (new_node);
 }
 
-void	select_next_node(t_pqueue *tmp_open, t_pqueue *open, size_t n)
+static void	select_next_node(t_pqueue *tmp_open, t_pqueue *open, size_t n)
 {
 	t_node	*node;
 	size_t	i;
@@ -40,7 +40,7 @@ void	select_next_node(t_pqueue *tmp_open, t_pqueue *open, size_t n)
 	}
 }
 
-void	expand_nodes(t_node *node, t_pqueue *open, t_hashset *closed,
+static void	expand_nodes(t_node *node, t_pqueue *open, t_hashset *closed,
 			const t_solver *solver)
 {
 	t_node		*tmp_node;
@@ -77,9 +77,9 @@ t_node	*search_opt_operations(t_node *first_node, const t_solver *solver)
 		node = ft_priority_queue_pop(open);
 		print_node(node);
 		if (solver->checker(node) == true)
-			return (update_node(node, open, closed));
+			break ;
 		expand_nodes(node, open, closed, solver);
 		delete_node(node);
 	}
-	return (NULL);
+	return (update_node(node, open, closed));
 }

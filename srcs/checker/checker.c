@@ -21,7 +21,7 @@ bool	checker_forth(t_node *node)
 
 bool	checker_back(t_node *node)
 {
-	if (node->lics_a >= node->target)
+	if (node->lics_a >= node->size)
 		return (true);
 	return (false);
 }

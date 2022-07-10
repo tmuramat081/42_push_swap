@@ -24,14 +24,13 @@ const t_solver	g_dataset_back = {
 	.search_width = 4
 };
 
-static void	update_next_target(t_node *node)
-{
-	size_t	expected;
-
+//static void	update_next_target(t_node *node)
+//{
+//	size_t	expected;
+//
 //	expected = ft_sqrt(node->size - node->lics_a);
-	expected = 1;
-	node->target = node->lics_a + expected;
-}
+//	node->target = node->lics_a + expected;
+//}
 
 void	opt_rotate_operations(t_node *node)
 {
@@ -56,12 +55,12 @@ void	solve_push_swap(int *nums, size_t size)
 	t_node	*node;
 
 	node = init_first_node(nums, size);
-	while (node->size != node->lics_a)
-	{
-		node = search_opt_operations(node, &g_dataset_forth);
+	node = search_opt_operations(node, &g_dataset_forth);
+//	while (node->size != node->lics_a)
+//	{
 		node = search_opt_operations(node, &g_dataset_back);
-		update_next_target(node);
-	}
+//		update_next_target(node);
+//	}
 	opt_rotate_operations(node);
 	put_answer(node->ops);
 	delete_node(node);

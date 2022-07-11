@@ -6,7 +6,7 @@
 /*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:00:50 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/05 09:47:37 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/07/11 22:27:35 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,6 @@
 
 # include "structure.h"
 
-typedef enum e_operation {
-	OP_SA,
-	OP_SB,
-	OP_PA,
-	OP_PB,
-	OP_RA,
-	OP_RB,
-	OP_RRA,
-	OP_RRB,
-	OP_SS,
-	OP_RR,
-	OP_RRR,
-	OP_END
-}	t_operation;
 
 typedef void	(*t_op_arr[OP_END])(t_node *);
 

@@ -67,16 +67,18 @@ bool	is_reverse_operation(t_node *node, t_operation next)
 bool	is_locked_operation(t_node *node, t_operation next)
 {
 	t_data	*top_a;
-//	t_data	*bottom_a;
-//	t_data	*top_b;
+	t_data	*bottom_a;
+	t_data	*top_b;
 
 	top_a = ft_deque_front(node->stack_a);
-//	bottom_a = ft_deque_back(node->stack_a);
-//	top_b = ft_deque_front(node->stack_b);
+	bottom_a = ft_deque_back(node->stack_a);
+	top_b = ft_deque_front(node->stack_b);
 	if (next == OP_PA && top_a->is_sorted == true)
 		return (true);
-//	if (next == OP_PB && !(bottom_a->value < top_b->value && top_b->value < top_a->value))
-//		return (true);
+	else if (next == OP_PB && (bottom_a->value > top_b->value || top_b->value > top_a->value))
+		return (true);
+	else if (next == OP_PB && (bottom_a->value > top_b->value || top_a->value == 0))
+		return (true);
 	return (false);
 }
 

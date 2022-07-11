@@ -35,6 +35,20 @@ struct s_node {
 	t_vector	*ops;
 };
 
+typedef enum e_operation {
+	OP_SA,
+	OP_SB,
+	OP_PA,
+	OP_PB,
+	OP_RA,
+	OP_RB,
+	OP_RRA,
+	OP_RRB,
+	OP_SS,
+	OP_RR,
+	OP_RRR,
+	OP_END
+}	t_operation;
 
 // For Dynamic Programming. it is utilized to calculate LICS (Longest Increasing Circular Subsequense). 
 struct s_tab {
@@ -49,6 +63,7 @@ struct s_data {
 };
 
 struct s_solver {
+	t_operation	operations[5];
 	t_eval		evaluator;
 	t_check		checker;
 	size_t		search_width;

@@ -45,10 +45,10 @@ static void	expand_nodes(t_node *node, t_pqueue *open, t_hashset *closed,
 {
 	t_node		*tmp_node;
 	t_pqueue	*tmp_open;
-	t_operation	next_op;
+	size_t		next_op;
 
 	tmp_open = ft_priority_queue_init(OP_END, &priority_comparator);
-	next_op = OP_SA;
+	next_op = 0;
 	while (next_op < OP_END)
 	{
 		if (is_valid_operation(node, next_op) == true)

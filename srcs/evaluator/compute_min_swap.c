@@ -55,7 +55,7 @@ size_t evaluate_min_swaps(t_node *node)
 		swaps_a = calculate_insert_swaps(node, itr->value);
 		swaps_b = get_circular_index(i, len);
 //		min_swaps = ft_min(min_swaps, ft_abs(swaps_a) + ft_abs(swaps_b));
-		min_swap += ft_abs(swaps_a) + ft_abs(swaps_b);
+		min_swaps += ft_abs(swaps_a) + ft_abs(swaps_b);
 		itr = deque_circular_next(node->stack_b, itr);
 		i++;
 	}

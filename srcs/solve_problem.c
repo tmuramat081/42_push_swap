@@ -13,15 +13,17 @@
 #include "push_swap.h"
 
 const t_solver	g_dataset_forth = {
+	.operations = {OP_PA, OP_SA, OP_RA, OP_RRA, OP_END},
 	.evaluator = evaluator_forth,
 	.checker = checker_forth,
-	.search_width = 11
+	.search_width = 2
 };
 
 const t_solver	g_dataset_back = {
+	.operations = {OP_PB, OP_SB, OP_RB, OP_RRB, OP_END},
 	.evaluator = evaluator_back,
 	.checker = checker_back,
-	.search_width = 4
+	.search_width = 2
 };
 
 //static void	update_next_target(t_node *node)

@@ -3,7 +3,7 @@ NAME := push_swap
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror
 ifdef FOR_DEBUG
-CFLAGS += -g -D FOR_DEBUG
+CFLAGS += -g -w -D FOR_DEBUG
 endif
 
 SRCS_DIR := srcs/

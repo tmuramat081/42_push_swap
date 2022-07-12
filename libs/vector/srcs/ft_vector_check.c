@@ -30,15 +30,3 @@ size_t	ft_vector_size(t_vector *vector)
 {
 	return (vector->len);
 }
-
-//******** For debug ********//
-void	ft_vector_status(t_vector *vector)
-{
-	puts("---vector status---");
-	printf("data:%p\n", vector->data);
-	printf("end:%p\n", vector->end);
-	printf("len:%ld\n", vector->len);
-	printf("cap:%ld\n", vector->cap);
-	printf("data_size:%ld\n", vector->data_size);
-	puts("-----------------");
-}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute_lics.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
+/*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 11:54:16 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/10 22:23:38 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/07/12 11:58:53 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ size_t	evaluate_lics(t_deque *stack)
 	t_tab	dp_tab;
 	t_data	*itr;
 	size_t	lics;
-	
+
 	clear_lics_tags(stack);
 	init_dp_table(&dp_tab, stack->len);
 	itr = search_min_element(stack);

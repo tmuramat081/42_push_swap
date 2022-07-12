@@ -5,7 +5,7 @@ static int	get_circular_index(size_t i, size_t len)
 {
 	if (i >= len / 2)
 		return ((int)i - (int)len);
-	return ((int)i); 
+	return ((int)i);
 }
 
 static bool	can_insert(t_deque *stack, t_data *itr, int target)
@@ -54,10 +54,9 @@ size_t evaluate_min_swaps(t_node *node)
 	{
 		swaps_a = calculate_insert_swaps(node, itr->value);
 		swaps_b = get_circular_index(i, len);
-//		min_swaps = ft_min(min_swaps, ft_abs(swaps_a) + ft_abs(swaps_b));
-		min_swaps += ft_abs(swaps_a) + ft_abs(swaps_b);
+		min_swaps += swaps_a + swaps_b;
 		itr = deque_circular_next(node->stack_b, itr);
 		i++;
 	}
-	return (min_swaps);
+	return (ft_abs(min_swaps));
 }

@@ -13,26 +13,18 @@
 #include "push_swap.h"
 
 const t_solver	g_dataset_forth = {
-	.operations = {OP_PA, OP_SA, OP_RA, OP_RRA, OP_END},
+	.operations = {OP_PA, OP_RA, OP_RRA, OP_END},
 	.evaluator = evaluator_forth,
 	.checker = checker_forth,
-	.search_width = 2
+	.search_width = 3
 };
 
 const t_solver	g_dataset_back = {
-	.operations = {OP_PB, OP_SB, OP_RB, OP_RRB, OP_END},
+	.operations = {OP_PB, OP_RB, OP_RRB, OP_END},
 	.evaluator = evaluator_back,
 	.checker = checker_back,
-	.search_width = 2
+	.search_width = 3
 };
-
-//static void	update_next_target(t_node *node)
-//{
-//	size_t	expected;
-//
-//	expected = ft_sqrt(node->size - node->lics_a);
-//	node->target = node->lics_a + expected;
-//}
 
 void	opt_rotate_operations(t_node *node)
 {
@@ -58,11 +50,11 @@ void	solve_push_swap(int *nums, size_t size)
 
 	node = init_first_node(nums, size);
 	node = search_opt_operations(node, &g_dataset_forth);
-//	while (node->size != node->lics_a)
-//	{
-		node = search_opt_operations(node, &g_dataset_back);
-//		update_next_target(node);
-//	}
+	if (!node)
+		hundle_error(node);
+	node = search_opt_operations(node, &g_dataset_back);
+	if (!node)
+		hundle_error(node);
 	opt_rotate_operations(node);
 	put_answer(node->ops);
 	delete_node(node);

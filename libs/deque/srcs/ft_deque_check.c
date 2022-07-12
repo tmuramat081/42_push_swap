@@ -30,16 +30,3 @@ size_t	ft_deque_size(t_deque *deque)
 {
 	return (deque->len);
 }
-
-//******** For debug ********//
-void	ft_deque_status(t_deque *deque)
-{
-	puts("---deque status---");
-	printf("data:%p\n", deque->data);
-	printf("begin:%p\n", deque->begin);
-	printf("end:%p\n", deque->end);
-	printf("len:%ld\n", deque->len);
-	printf("cap:%ld\n", deque->cap);
-	printf("data_size:%ld\n", deque->data_size);
-	puts("-----------------");
-}

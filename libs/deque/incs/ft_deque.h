@@ -54,9 +54,6 @@ void	*ft_deque_front(t_deque *deque);
 void	*ft_deque_back(t_deque *deque);
 void	*ft_deque_next(t_deque *deque, void *i, size_t n);
 void	*ft_deque_prev(t_deque *deque, void *i, size_t n);
-
-// ********** Other utils ********** //
 void	ft_deque_foreach(t_deque *deque, void (*func)(void *));
-void	ft_deque_status(t_deque *deque);
 
 #endif

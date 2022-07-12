@@ -45,19 +45,19 @@ static void	expand_nodes(t_node *node, t_pqueue *open, t_hashset *closed,
 {
 	t_node		*tmp_node;
 	t_pqueue	*tmp_open;
-	size_t		next_op;
+	size_t		i;
 
 	tmp_open = ft_priority_queue_init(OP_END, &priority_comparator);
-	next_op = 0;
-	while (next_op < OP_END)
+	i = 0;
+	while (solver->operations[i] < OP_END)
 	{
-		if (is_valid_operation(node, next_op) == true)
+		if (is_valid_operation(node, solver->operations[i]) == true)
 		{
 			tmp_node = copy_node(node);
-			exec_operation(tmp_node, next_op);
+			exec_operation(tmp_node, solver->operations[i]);
 			evaluate_next_node(tmp_node, tmp_open, closed, solver->evaluator);
 		}
-		next_op++;
+		i++;
 	}
 	select_next_node(tmp_open, open, solver->search_width);
 	ft_priority_queue_delete(&tmp_open, delete_node);
@@ -77,9 +77,9 @@ t_node	*search_opt_operations(t_node *first_node, const t_solver *solver)
 		node = ft_priority_queue_pop(open);
 		print_node(node);
 		if (solver->checker(node) == true)
-			break ;
+			return (update_node(node, open, closed));
 		expand_nodes(node, open, closed, solver);
 		delete_node(node);
 	}
-	return (update_node(node, open, closed));
+	return (NULL);
 }

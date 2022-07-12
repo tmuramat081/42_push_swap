@@ -31,7 +31,6 @@ struct s_node {
 	size_t		lics_a;
 	size_t		size;
 	size_t		cost;
-	size_t		target;
 	t_vector	*ops;
 };
 
@@ -50,7 +49,8 @@ typedef enum e_operation {
 	OP_END
 }	t_operation;
 
-// For Dynamic Programming. it is utilized to calculate LICS (Longest Increasing Circular Subsequense). 
+// For Dynamic Programming. it is utilized to calculate LICS (Longest Increasing
+// Circular Subsequense).
 struct s_tab {
 	t_vector	*val;
 	t_vector	*idx;
@@ -63,7 +63,7 @@ struct s_data {
 };
 
 struct s_solver {
-	t_operation	operations[5];
+	t_operation	operations[OP_END];
 	t_eval		evaluator;
 	t_check		checker;
 	size_t		search_width;

@@ -63,7 +63,7 @@ struct s_data {
 };
 
 struct s_solver {
-	t_operation	operations[OP_END];
+	t_operation	operations[OP_END + 1];
 	t_eval		evaluator;
 	t_check		checker;
 	size_t		search_width;

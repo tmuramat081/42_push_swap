@@ -1,6 +1,5 @@
 #include "push_swap.h"
 
-
 static int	get_circular_index(size_t i, size_t len)
 {
 	if (i >= len / 2)
@@ -44,7 +43,7 @@ size_t evaluate_min_swaps(t_node *node)
 	int		swaps_a;
 	int		swaps_b;
 	size_t	len;
-	int		min_swaps;
+	size_t	min_swaps;
 
 	min_swaps = 0;
 	len = ft_deque_size(node->stack_b);
@@ -54,9 +53,9 @@ size_t evaluate_min_swaps(t_node *node)
 	{
 		swaps_a = calculate_insert_swaps(node, itr->value);
 		swaps_b = get_circular_index(i, len);
-		min_swaps += swaps_a + swaps_b;
+		min_swaps = ft_max(min_swaps, ft_abs(swaps_a + swaps_b));
 		itr = deque_circular_next(node->stack_b, itr);
 		i++;
 	}
-	return (ft_abs(min_swaps));
+	return (min_swaps);
 }

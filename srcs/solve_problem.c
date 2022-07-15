@@ -16,7 +16,7 @@ const t_solver	g_dataset_forth = {
 	.operations = {OP_PA, OP_SA, OP_RA, OP_RRA, OP_END},
 	.evaluator = evaluator_forth,
 	.checker = checker_forth,
-	.search_width = 3
+	.search_width = 2
 };
 
 const t_solver	g_dataset_back = {

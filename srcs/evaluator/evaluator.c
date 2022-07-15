@@ -31,7 +31,6 @@ size_t	evaluator_back(t_node *node)
 
 	node->lics_a = evaluate_lics(node->stack_a);
 //	min_swap = evaluate_min_swaps(node);
-//	cost_h = ft_max(node->size - node->lics_a, min_swap);
 	cost_h = node->size - node->lics_a;
 	cost_g = ft_vector_size(node->ops);
 	return (cost_g + (double)cost_h * 10.0);

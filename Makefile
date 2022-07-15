@@ -129,7 +129,7 @@ re: fclean
 
 #: [debug] Print debug info.
 debug:
-	@${MAKE} re FOR_DEBUG=1 --no-print-directory
+	@${MAKE} FOR_DEBUG=1 --no-print-directory
 
 #: Push to git repository.
 git:

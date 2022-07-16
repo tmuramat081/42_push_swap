@@ -28,25 +28,30 @@ static void	stack_rev_rotate(t_deque *stack)
 
 	if (ft_deque_is_empty(stack) == true)
 		return ;
-	ft_deque_pop_back(stack, &tmp);
-	ft_deque_push_front(stack, &tmp);
+	if (!ft_deque_pop_back(stack, &tmp))
+		exit(EXIT_FAILURE);
+	if (!ft_deque_push_front(stack, &tmp))
+		exit(EXIT_FAILURE);
 }
 
 void	op_rra(t_node *node)
 {
 	stack_rev_rotate(node->stack_a);
-	ft_vector_push_back(node->ops, &(t_operation){OP_RRA});
+	if (!ft_vector_push_back(node->ops, &(t_operation){OP_RRA}))
+		exit(EXIT_FAILURE);
 }
 
 void	op_rrb(t_node *node)
 {
 	stack_rev_rotate(node->stack_b);
-	ft_vector_push_back(node->ops, &(t_operation){OP_RRB});
+	if (!ft_vector_push_back(node->ops, &(t_operation){OP_RRB}))
+		exit(EXIT_FAILURE);
 }
 
 void	op_rrr(t_node *node)
 {
 	stack_rev_rotate(node->stack_a);
 	stack_rev_rotate(node->stack_b);
-	ft_vector_push_back(node->ops, &(t_operation){OP_RRR});
+	if (!ft_vector_push_back(node->ops, &(t_operation){OP_RRR}))
+		exit(EXIT_FAILURE);
 }

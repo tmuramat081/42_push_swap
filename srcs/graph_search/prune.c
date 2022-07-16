@@ -13,7 +13,7 @@
 #include "push_swap.h"
 #include "operation.h"
 
-bool	is_empty_operation(t_node *node, t_operation next)
+static bool	is_empty_operation(t_node *node, t_operation next)
 {
 	if (ft_deque_is_empty(node->stack_a) == true)
 	{
@@ -42,7 +42,7 @@ bool	is_empty_operation(t_node *node, t_operation next)
 	return (false);
 }
 
-bool	is_reverse_operation(t_node *node, t_operation next)
+static bool	is_reverse_operation(t_node *node, t_operation next)
 {
 	t_operation	prev;
 
@@ -64,7 +64,7 @@ bool	is_reverse_operation(t_node *node, t_operation next)
 	return (false);
 }
 
-bool	is_locked_operation(t_node *node, t_operation next)
+static bool	is_locked_operation(t_node *node, t_operation next)
 {
 	t_data	*top_a;
 	t_data	*bottom_a;
@@ -75,11 +75,12 @@ bool	is_locked_operation(t_node *node, t_operation next)
 	top_b = ft_deque_front(node->stack_b);
 	if (next == OP_PA && top_a->is_sorted == true)
 		return (true);
-	if (next == OP_PB
-		&& ((top_a->value != 0 && bottom_a->value != 0 && (bottom_a->value > top_b->value || top_b->value > top_a->value))
-			|| (top_a->value == 0 && bottom_a->value > top_b->value)
-			|| (bottom_a->value == 0 && top_b->value > top_a->value)))
-		return (true);
+//	if (next == OP_PB
+//		&& ((top_a->value != 0 && bottom_a->value != 0
+//		&& (bottom_a->value > top_b->value || top_b->value > top_a->value))
+//			|| (top_a->value == 0 && bottom_a->value > top_b->value)
+//			|| (bottom_a->value == 0 && top_b->value > top_a->value)))
+//		return (true);
 	return (false);
 }
 

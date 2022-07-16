@@ -31,6 +31,7 @@ struct s_node {
 	size_t		lics_a;
 	size_t		size;
 	size_t		cost;
+	size_t		target;
 	t_vector	*ops;
 };
 

@@ -14,14 +14,14 @@
 
 bool	checker_forth(t_node *node)
 {
-	if(ft_deque_size(node->stack_a) == node->lics_a)
+	if (ft_deque_size(node->stack_b) >= node->target - node->lics_a)
 		return (true);
 	return (false);
 }
 
 bool	checker_back(t_node *node)
 {
-	if (node->lics_a == node->size)
+	if (node->lics_a >= node->target)
 		return (true);
 	return (false);
 }

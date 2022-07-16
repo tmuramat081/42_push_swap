@@ -66,6 +66,7 @@ void	print_node(t_node *node)
 	ft_printf("------stack------\n");
 	print_two_stacks(node->stack_a, node->stack_b);
 	ft_printf("lics:%d\n", node->lics_a);
+	ft_printf("target:%d\n", node->target);
 	ft_printf("----operation----\n");
 //	put_answer(node->ops);
 	ft_printf("result:%d\n", node->ops->len);
@@ -76,7 +77,7 @@ void	print_node(t_node *node)
 	ft_printf("g(actual):%d\n", node->ops->len);
 	ft_printf("h(expected):%d\n", node->cost - node->ops->len);
 	ft_printf("\n");
-//	usleep(1000000);
+//	usleep(10000);
 }
 #else
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
+/*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 01:01:44 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/01 15:22:41 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/07/16 02:40:43 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,30 @@ static void	stack_rotate(t_deque *stack)
 
 	if (ft_deque_is_empty(stack) == true)
 		return ;
-	ft_deque_pop_front(stack, &tmp);
-	ft_deque_push_back(stack, &tmp);
+	if (!ft_deque_pop_front(stack, &tmp))
+		exit(EXIT_FAILURE);
+	if (!ft_deque_push_back(stack, &tmp))
+		exit(EXIT_FAILURE);
 }
 
 void	op_ra(t_node *node)
 {
 	stack_rotate(node->stack_a);
-	ft_vector_push_back(node->ops, &(t_operation){OP_RA});
+	if (!ft_vector_push_back(node->ops, &(t_operation){OP_RA}))
+		exit(EXIT_FAILURE);
 }
 
 void	op_rb(t_node *node)
 {
 	stack_rotate(node->stack_b);
-	ft_vector_push_back(node->ops, &(t_operation){OP_RB});
+	if (!ft_vector_push_back(node->ops, &(t_operation){OP_RB}))
+		exit(EXIT_FAILURE);
 }
 
 void	op_rr(t_node *node)
 {
 	stack_rotate(node->stack_a);
 	stack_rotate(node->stack_b);
-	ft_vector_push_back(node->ops, &(t_operation){OP_RR});
+	if (!ft_vector_push_back(node->ops, &(t_operation){OP_RR}))
+		exit(EXIT_FAILURE);
 }

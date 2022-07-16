@@ -35,7 +35,8 @@ static void	select_next_node(t_pqueue *tmp_open, t_pqueue *open, size_t n)
 	while (i < (size_t)ft_min(n, ft_priority_queue_size(tmp_open)))
 	{
 		node = ft_priority_queue_pop(tmp_open);
-		ft_priority_queue_push(open, node);
+		if (!ft_priority_queue_push(open, node))
+			exit(EXIT_FAILURE);
 		i++;
 	}
 }

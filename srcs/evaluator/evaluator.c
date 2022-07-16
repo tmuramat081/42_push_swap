@@ -20,17 +20,15 @@ size_t	evaluator_forth(t_node *node)
 	node->lics_a = evaluate_lics(node->stack_a);
 	cost_h = ft_deque_size(node->stack_a) - node->lics_a;
 	cost_g = ft_vector_size(node->ops);
-	return (cost_g + (double)cost_h * 10.0);
+	return (cost_g + (double)cost_h * 1.0);
 }
 
 size_t	evaluator_back(t_node *node)
 {
 	size_t	cost_g;
 	size_t	cost_h;
-//	size_t	min_swap;
 
 	node->lics_a = evaluate_lics(node->stack_a);
-//	min_swap = evaluate_min_swaps(node);
 	cost_h = node->size - node->lics_a;
 	cost_g = ft_vector_size(node->ops);
 	return (cost_g + (double)cost_h * 10.0);

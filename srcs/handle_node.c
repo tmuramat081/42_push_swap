@@ -6,7 +6,7 @@
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 22:19:24 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/12 11:58:26 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/07/16 14:52:57 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ t_node	*init_first_node(int *nums, size_t size)
 	node->ops = ft_vector_init(sizeof(t_operation), OPS_SIZE);
 	node->size = size;
 	node->lics_a = 0;
+	node->target = ft_sqrt(node->size);
 	free(nums);
 	return (node);
 }

@@ -20,13 +20,11 @@ const t_solver	g_dataset_forth = {
 };
 
 const t_solver	g_dataset_back = {
-	.operations = {OP_SA, OP_SB, OP_PA, OP_PB, OP_RA, OP_RB, OP_RRA, OP_RRB, OP_SS, OP_RR, OP_RRR, OP_END},
+	.operations = {OP_PB, OP_SB, OP_RB, OP_RRB, OP_RA, OP_RRA, OP_END},
 	.evaluator = evaluator_back,
 	.checker = checker_back,
-	.search_width = 3
+	.search_width = 4
 };
-
-
 
 void	opt_rotate_operations(t_node *node)
 {
@@ -46,17 +44,31 @@ void	opt_rotate_operations(t_node *node)
 	}
 }
 
+bool	is_sorted(t_node *node)
+{
+	if (node->lics_a == node->size)
+		return (true);
+	return (false);
+}
+
+void	update_search_condition(t_node *node)
+{
+	node->target += ft_sqrt(node->size - node->target);
+	if (node->target >= node->size)
+		node->target = node->size;
+}
+
 void	solve_push_swap(int *nums, size_t size)
 {
 	t_node	*node;
 
 	node = init_first_node(nums, size);
-	node = search_opt_operations(node, &g_dataset_forth);
-	if (!node)
-		hundle_error(node);
-	node = search_opt_operations(node, &g_dataset_back);
-	if (!node)
-		hundle_error(node);
+	while (is_sorted(node) == false)
+	{
+		node = search_opt_operations(node, &g_dataset_forth);
+		node = search_opt_operations(node, &g_dataset_back);
+		update_search_condition(node);
+	}
 	opt_rotate_operations(node);
 	put_answer(node->ops);
 	delete_node(node);

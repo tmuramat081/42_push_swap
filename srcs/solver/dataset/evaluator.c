@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compare.c                                          :+:      :+:    :+:   */
+/*   evalator.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/24 14:08:55 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/06/24 14:08:55 by tmuramat         ###   ########.fr       */
+/*   Created: 2022/06/25 11:11:47 by tmuramat          #+#    #+#             */
+/*   Updated: 2022/06/25 11:11:47 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	priority_comparator(const void *ptr1, const void *ptr2)
+/** heuristic cost; f = g + h */
+size_t	evaluator(t_node *node)
 {
-	t_node	*node1;
-	t_node	*node2;
+	size_t	cost_g;
+	size_t	cost_h;
 
-	node1 = (t_node *)ptr1;
-	node2 = (t_node *)ptr2;
-	if (node1->cost > node2->cost)
-		return (1);
-	else if (node1->cost < node2->cost)
-		return (-1);
-	if (ft_vector_size(node1->ops) > ft_vector_size(node2->ops))
-		return (1);
-	else if (ft_vector_size(node1->ops) < ft_vector_size(node2->ops))
-		return (-1);
-	return (0);
+	node->lic_a = evaluate_lic(node->stack_a);
+	cost_h = node->size - node->lic_a;
+	cost_g = ft_vector_size(node->operations);
+	return (cost_g + (double)cost_h * 10.0);
 }

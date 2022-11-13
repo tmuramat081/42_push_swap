@@ -12,20 +12,20 @@
 
 #include "push_swap.h"
 
-void	init_dp_table(t_tab *dp_tab, size_t size)
+void	init_dp_table(t_tab *dp_table, size_t size)
 {
-	dp_tab->val = ft_vector_init(sizeof(int), size);
-	dp_tab->idx = ft_vector_init(sizeof(int), size);
+	dp_table->val = ft_vector_init(sizeof(int), size);
+	dp_table->idx = ft_vector_init(sizeof(int), size);
 }
 
-void	clear_dp_table(t_tab *dp_tab)
+void	clear_dp_table(t_tab *dp_table)
 {
-	ft_vector_clear(dp_tab->val);
-	ft_vector_clear(dp_tab->idx);
+	ft_vector_clear(dp_table->val);
+	ft_vector_clear(dp_table->idx);
 }
 
-void	delete_dp_table(t_tab *dp_tab)
+void	delete_dp_table(t_tab *dp_table)
 {
-	ft_vector_delete(&dp_tab->val);
-	ft_vector_delete(&dp_tab->idx);
+	ft_vector_delete(&dp_table->val);
+	ft_vector_delete(&dp_table->idx);
 }

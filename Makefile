@@ -3,6 +3,7 @@ NAME := push_swap
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror
 ifdef FOR_DEBUG
+NAME := push_swap_dev
 CFLAGS += -g -w -D FOR_DEBUG
 endif
 
@@ -10,27 +11,27 @@ SRCS_DIR := srcs/
 SRCS := main.c \
 		input_numbers.c \
 		format_numbers.c \
-		handle_node.c \
-		solve_problem.c \
-		put_answer.c \
-		print_debug.c \
-		graph_search/search_routine.c \
-		graph_search/evaluate_node.c \
-		graph_search/prune.c \
-		graph_search/compare.c \
-		graph_search/hash.c \
-		graph_search/copy_node.c \
-		evaluator/evaluator.c \
-		evaluator/compute_lics.c \
+		solver/solve_problem.c \
+		solver/put_answer.c \
+		solver/search_routine.c \
+		solver/handle_node.c \
+		solver/evaluate_node.c \
+		solver/prune.c \
+		solver/copy_node.c \
+		solver/dataset/hash.c \
+		solver/dataset/comparator.c \
+		solver/dataset/checker.c \
+		solver/dataset/evaluator.c \
+		evaluator/compute_lic.c \
 		evaluator/compute_min_swap.c \
 		evaluator/dp_table.c \
 		evaluator/utils.c \
-		checker/checker.c \
 		operation/op_push.c \
-		operation/op_rev_rotate.c \
-		operation/op_rotate.c \
 		operation/op_swap.c \
-		operation/operations.c
+		operation/op_rotate.c \
+		operation/op_rev_rotate.c \
+		operation/operations.c \
+		print_debug.c
 
 OBJS_DIR := objs/
 OBJS := ${addprefix ${OBJS_DIR},${SRCS:.c=.o}}
@@ -128,8 +129,8 @@ re: fclean
 	@${MAKE} -s all
 
 #: [debug] Print debug info.
-debug:
-	@${MAKE} FOR_DEBUG=1 --no-print-directory
+dev:
+	@${MAKE} ${NAME_DEV} FOR_DEBUG=1 --no-print-directory
 
 #: Push to git repository.
 git:

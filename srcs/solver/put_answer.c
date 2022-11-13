@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	put_answer(t_vector *ops)
+void	put_answer(t_vector *operations)
 {
-	ft_vector_foreach(ops, &print_operation);
+	ft_vector_foreach(operations, &print_operation);
 }

@@ -26,41 +26,39 @@
 # include "ft_hashset.h"
 
 // ********** Main solver ********** //
-int		*input_numbers(char **args, size_t n);
+int		*input_arguments(char **args, size_t n);
 void	format_numbers(int **arr_src, size_t n);
 t_node	*init_first_node(int *nums, size_t size);
-void	solve_push_swap(int *nums, size_t size);
-void	put_answer(t_vector *ops);
+void	solve_push_swap_problem(int *nums, size_t size);
+void	put_answer(t_vector *operations);
 
-// ********** Graph search (A star algorithm)********** //
+// ********** Graph search algorithm) ********** //
 t_node	*search_opt_operations(t_node *first_node, const t_solver *solver);
 void	evaluate_first_node(t_node *node, t_pqueue *open, t_hashset *closed,
 			t_eval evaluator);
 void	evaluate_next_node(t_node *tmp_node, t_pqueue *tmp_open,
 			t_hashset *closed, t_eval evaluator);
 
-int		priority_comparator(const void *ptr1, const void *ptr2);
 void	evalatoruate_cost(t_node *node, t_vector *dp_tab);
 bool	is_valid_operation(t_node *node, t_operation op);
 size_t	hash_node(const void *node);
 t_node	*copy_node(const t_node *src);
 
 // ********** Evaluator ********** //
-size_t	evaluate_lics(t_deque *stack);
-void	clear_lics_tags(t_deque *stack);
-void	put_on_lics_tags(t_vector *res);
-size_t	evaluator_forth(t_node *node);
-size_t	evaluator_back(t_node *node);
-
+size_t	evaluator(t_node *node);
+size_t	evaluate_lic(t_deque *stack);
+void	clear_lic_tags(t_deque *stack);
+void	put_on_lic_tags(t_vector *res);
 size_t	evaluate_min_swaps(t_node *node);
 
 void	init_dp_table(t_tab *dp_tab, size_t size);
 void	clear_dp_table(t_tab *dp_tab);
 void	delete_dp_table(t_tab *dp_tab);
 
-// ********** Checker ********** //
-bool	checker_forth(t_node *node);
-bool	checker_back(t_node *node);
+// ********** checker ********** //
+bool	checker(t_node *node);
+int		priority_comparator(const void *ptr1, const void *ptr2);
+
 
 // ********** Node utils ********** //
 void	delete_node(void *ptr);

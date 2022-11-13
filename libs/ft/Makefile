@@ -13,6 +13,7 @@ CHR_SRCS = ft_isalpha.c \
 STR_SRCS = ft_strlen.c \
 		ft_split.c \
 		ft_strchr.c \
+		ft_strspn.c \
 		ft_strcspn.c \
 		ft_strdup.c \
 		ft_striteri.c \
@@ -26,7 +27,8 @@ STR_SRCS = ft_strlen.c \
 		ft_strtol_d.c \
 		ft_substr.c \
 		ft_strtoupper.c \
-		ft_strtrim.c
+		ft_strtrim.c \
+		ft_strtok_r.c
 MEM_SRCS = ft_bzero.c \
 		ft_calloc.c \
 		ft_free_matrix.c \

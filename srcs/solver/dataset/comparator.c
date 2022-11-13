@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   compare.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/15 15:49:21 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/06/15 15:49:21 by tmuramat         ###   ########.fr       */
+/*   Created: 2022/06/24 14:08:55 by tmuramat          #+#    #+#             */
+/*   Updated: 2022/06/24 14:08:55 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+int	priority_comparator(const void *ptr1, const void *ptr2)
 {
-	int		*nums;
-	size_t	size;
+	t_node	*node1;
+	t_node	*node2;
 
-	if (ac == 1)
-		return (0);
-	size = (size_t)ac - 1;
-	nums = input_arguments(&av[1], size);
-	format_numbers(&nums, size);
-	solve_push_swap_problem(nums, size);
+	node1 = (t_node *)ptr1;
+	node2 = (t_node *)ptr2;
+	if (node1->cost > node2->cost)
+		return (1);
+	else if (node1->cost < node2->cost)
+		return (-1);
+	if (ft_vector_size(node1->operations) > ft_vector_size(node2->operations))
+		return (1);
+	else if (ft_vector_size(node1->operations)
+		< ft_vector_size(node2->operations))
+		return (-1);
 	return (0);
 }

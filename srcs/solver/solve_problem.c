@@ -12,21 +12,14 @@
 
 #include "push_swap.h"
 
-const t_solver	g_dataset_forth = {
-	.operations = {OP_PA, OP_SA, OP_RA, OP_RRA, OP_END},
-	.evaluator = evaluator_forth,
-	.checker = checker_forth,
-	.search_width = 4
+const t_solver	g_dataset = {
+	.operations = {OP_PB, OP_SA, OP_SB, OP_RB, OP_RRB, OP_RA, OP_RRA, OP_END},
+	.evaluator = evaluator,
+	.checker = checker,
+	.search_width = 4,
 };
 
-const t_solver	g_dataset_back = {
-	.operations = {OP_PB, OP_SB, OP_RB, OP_RRB, OP_RA, OP_RRA, OP_END},
-	.evaluator = evaluator_back,
-	.checker = checker_back,
-	.search_width = 4
-};
-
-void	opt_rotate_operations(t_node *node)
+void	rotate_elems_of_a(t_node *node)
 {
 	t_data		*top_a;
 	t_operation	op;
@@ -46,30 +39,46 @@ void	opt_rotate_operations(t_node *node)
 
 bool	is_sorted(t_node *node)
 {
-	if (node->lics_a == node->size)
+	if (node->lic_a == node->size)
 		return (true);
 	return (false);
 }
 
-void	update_search_condition(t_node *node)
+void	push_unsorted_elems_to_b(t_node *node)
 {
-	node->target += ft_sqrt(node->size - node->target);
-	if (node->target >= node->size)
-		node->target = node->size;
+	t_data			*top_a;
+	int				len_unsorted;
+
+	len_unsorted = ft_deque_size(node->stack_a) - evaluate_lic(node->stack_a);
+	while (len_unsorted)
+	{
+		top_a = ft_deque_front(node->stack_a);
+		if (top_a->is_sorted == false)
+		{
+			exec_operation(node, OP_PA);
+			len_unsorted--;
+			print_node(node);
+		}
+		exec_operation(node, OP_RA);
+	}
 }
 
-void	solve_push_swap(int *nums, size_t size)
+void	push_sorted_elems_to_a(t_node *node)
+{
+	node = search_opt_operations(node, &g_dataset);
+	if (!node)
+		exit(0);
+}
+
+void	solve_push_swap_problem(int *nums, size_t size)
 {
 	t_node	*node;
 
 	node = init_first_node(nums, size);
-	while (is_sorted(node) == false)
-	{
-		node = search_opt_operations(node, &g_dataset_forth);
-		node = search_opt_operations(node, &g_dataset_back);
-		update_search_condition(node);
-	}
-	opt_rotate_operations(node);
-	put_answer(node->ops);
+	push_unsorted_elems_to_b(node);
+	push_sorted_elems_to_a(node);
+	exit(0);
+	rotate_elems_of_a(node);
+	put_answer(node->operations);
 	delete_node(node);
 }

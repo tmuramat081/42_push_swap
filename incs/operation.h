@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
+/*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:00:50 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/11 22:27:35 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/11/08 00:41:38 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define OPERATION_H
 
 # include "structure.h"
-
 
 typedef void	(*t_op_arr[OP_END])(t_node *);
 

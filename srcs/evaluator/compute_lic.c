@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compute_lics.c                                     :+:      :+:    :+:   */
+/*   compute_lic.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -84,18 +84,18 @@ static void	*search_min_element(t_deque *stack)
 	return (itr);
 }
 
-size_t	evaluate_lics(t_deque *stack)
+size_t	evaluate_lic(t_deque *stack)
 {
-	t_tab	dp_tab;
+	t_tab	dp_table;
 	t_data	*itr;
-	size_t	lics;
+	size_t	lic_length;
 
-	clear_lics_tags(stack);
-	init_dp_table(&dp_tab, stack->len);
+	clear_lic_tags(stack);
+	init_dp_table(&dp_table, stack->len);
 	itr = search_min_element(stack);
-	dp_calculate_lic(stack, itr, &dp_tab);
-	dp_construct_lic(stack, itr, &dp_tab);
-	lics = ft_vector_size(dp_tab.val);
-	delete_dp_table(&dp_tab);
-	return (lics);
+	dp_calculate_lic(stack, itr, &dp_table);
+	dp_construct_lic(stack, itr, &dp_table);
+	lic_length = ft_vector_size(dp_table.val);
+	delete_dp_table(&dp_table);
+	return (lic_length);
 }

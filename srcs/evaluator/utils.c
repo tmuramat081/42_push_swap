@@ -28,7 +28,7 @@ void	*deque_circular_next(t_deque *stack, void *itr)
 	return (itr);
 }
 
-void	clear_lics_tags(t_deque *stack)
+void	clear_lic_tags(t_deque *stack)
 {
 	t_data	*itr;
 	size_t	len;

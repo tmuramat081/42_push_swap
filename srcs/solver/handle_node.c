@@ -6,14 +6,14 @@
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 22:19:24 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/17 07:13:05 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/11/12 23:22:35 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
 
-#define OPS_SIZE 64
+#define OPERATION_SIZE 64
 #define ERR_MSG "invalid arguments.\n"
 
 void	hundle_error(t_node *node)
@@ -31,7 +31,7 @@ void	delete_node(void *ptr)
 	node = (t_node *)ptr;
 	ft_deque_delete(&node->stack_a);
 	ft_deque_delete(&node->stack_b);
-	ft_vector_delete(&node->ops);
+	ft_vector_delete(&node->operations);
 	free(node);
 }
 
@@ -53,12 +53,11 @@ t_node	*init_first_node(int *nums, size_t size)
 
 	node = ft_xmalloc(sizeof(t_node));
 	node->stack_a = ft_deque_init(sizeof(t_data), size);
-	push_input_numbers(node->stack_a, nums, size);
 	node->stack_b = ft_deque_init(sizeof(t_data), size);
-	node->ops = ft_vector_init(sizeof(t_operation), OPS_SIZE);
+	node->operations = ft_vector_init(sizeof(t_operation), OPERATION_SIZE);
 	node->size = size;
-	node->lics_a = 0;
-	node->target = ft_sqrt(node->size);
+	node->lic_a = 0;
+	push_input_numbers(node->stack_a, nums, size);
 	free(nums);
 	return (node);
 }

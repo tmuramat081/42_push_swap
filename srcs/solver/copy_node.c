@@ -54,10 +54,9 @@ t_node	*copy_node(const t_node *src)
 	dst = malloc(sizeof(t_node));
 	dst->stack_a = deque_copy(src->stack_a);
 	dst->stack_b = deque_copy(src->stack_b);
-	dst->lics_a = src->lics_a;
+	dst->lic_a = src->lic_a;
 	dst->size = src->size;
 	dst->cost = src->cost;
-	dst->target = src->target;
-	dst->ops = vector_copy(src->ops);
+	dst->operations = vector_copy(src->operations);
 	return (dst);
 }

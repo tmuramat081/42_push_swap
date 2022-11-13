@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	cmp_ascending(const void *a, const void *b)
+static int	cmp_ascending(const void *a, const void *b)
 {
 	int	*ac;
 	int	*bc;
@@ -26,48 +26,48 @@ int	cmp_ascending(const void *a, const void *b)
 	return (0);
 }
 
-static bool	array_is_unique(int *arr, size_t n)
+static bool	is_array_unique(int *nums, size_t n)
 {
 	size_t	i;
 
 	i = 0;
 	while (i + 1 < n)
 	{
-		if (arr[i] == arr[i + 1])
+		if (nums[i] == nums[i + 1])
 			return (false);
 		i++;
 	}
 	return (true);
 }
 
-static int	*coord_compression(int *arr_src, int *arr_cpy, size_t n)
+static int	*coord_compression(int *src_nums, int *cpy_nums, size_t n)
 {
-	int		*arr_dst;
+	int		*dst_nums;
 	size_t	i;
 
-	arr_dst = (int *)ft_xmalloc(sizeof(int) * n);
+	dst_nums = (int *)ft_xmalloc(sizeof(int) * n);
 	i = 0;
 	while (i < n)
 	{
-		arr_dst[i] = ft_lower_bound(arr_cpy, n, arr_src[i]) - arr_cpy;
+		dst_nums[i] = ft_lower_bound(cpy_nums, n, src_nums[i]) - cpy_nums;
 		i++;
 	}
-	return (arr_dst);
+	return (dst_nums);
 }
 
-void	format_numbers(int **arr_src, size_t n)
+void	format_numbers(int **src_nums, size_t n)
 {
-	int	*arr_cpy;
-	int	*arr_dst;
+	int	*cpy_nums;
+	int	*dst_nums;
 
-	arr_cpy = ft_arraydup(*arr_src, n);
-	if (!arr_cpy)
+	cpy_nums = ft_arraydup(*src_nums, n);
+	if (!cpy_nums)
 		hundle_error(NULL);
-	ft_qsort(arr_cpy, n, sizeof(int), cmp_ascending);
-	if (array_is_unique(arr_cpy, n) == false)
+	ft_qsort(cpy_nums, n, sizeof(int), cmp_ascending);
+	if (is_array_unique(cpy_nums, n) == false)
 		hundle_error(NULL);
-	arr_dst = coord_compression(*arr_src, arr_cpy, n);
-	free(*arr_src);
-	free(arr_cpy);
-	*arr_src = arr_dst;
+	dst_nums = coord_compression(*src_nums, cpy_nums, n);
+	free(*src_nums);
+	free(cpy_nums);
+	*src_nums = dst_nums;
 }

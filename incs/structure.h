@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmuramat <mt15hydrangea@gmail.com>         +#+  +:+       +#+        */
+/*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 22:46:05 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/07/03 22:46:05 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/11/12 23:21:55 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,10 @@ typedef bool				(*t_check)(t_node *);
 struct s_node {
 	t_deque		*stack_a;
 	t_deque		*stack_b;
-	size_t		lics_a;
+	size_t		lic_a;
 	size_t		size;
 	size_t		cost;
-	size_t		target;
-	t_vector	*ops;
+	t_vector	*operations;
 };
 
 typedef enum e_operation {
@@ -50,7 +49,7 @@ typedef enum e_operation {
 	OP_END
 }	t_operation;
 
-// For Dynamic Programming. it is utilized to calculate LICS (Longest Increasing
+// For Dynamic Programming. it is utilized to calculate lic (Longest Increasing
 // Circular Subsequense).
 struct s_tab {
 	t_vector	*val;

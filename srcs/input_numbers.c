@@ -13,31 +13,64 @@
 #include <limits.h>
 #include "push_swap.h"
 
-int	convert_number(char *str)
+int	convert_str_to_int(char *str)
 {
-	char	*endptr;
-	long	l_num;
+	char	*end_ptr;
+	long	long_num;
 
-	endptr = NULL;
-	l_num = ft_strtol_d(str, &endptr);
-	if (l_num < INT_MIN || INT_MAX < l_num)
+	end_ptr = NULL;
+	long_num = ft_strtol_d(str, &end_ptr);
+	if (long_num < INT_MIN || INT_MAX < long_num)
 		hundle_error(NULL);
-	else if (*endptr || endptr == str)
+	else if (*end_ptr || end_ptr == str)
 		hundle_error(NULL);
-	return ((int)l_num);
+	return ((int)long_num);
 }
 
-int	*input_numbers(char **args, size_t n)
+/** When strings are received, convert to int value. */
+int	*input_multiple_string(char **str, size_t len)
 {
+	int		*nums;
 	size_t	i;
-	int		*arr;
 
-	arr = (int *)ft_xmalloc(sizeof(int) * (n));
+	nums = (int *)ft_xmalloc(sizeof(int) * len);
 	i = 0;
-	while (i < n)
+	while (i < len)
 	{
-		arr[i] = convert_number(args[i]);
+		nums[i] = convert_str_to_int(str[i]);
 		i++;
 	}
-	return (arr);
+	return (nums);
+}
+
+/** When a string is received, split and convert to int value. */
+int	*input_single_string(char *str)
+{
+	int		*nums;
+	char	*save_ptr;
+	char	*token;
+	size_t	i;
+
+	nums = (int *)ft_xmalloc(sizeof(int) * ft_strlen(str));
+	save_ptr = NULL;
+	token = ft_strtok_r(str, " ", &save_ptr);
+	i = 0;
+	while (token)
+	{
+		nums[i] = convert_str_to_int(token);
+		token = ft_strtok_r(NULL, " ", &save_ptr);
+		i++;
+	}
+	return (nums);
+}
+
+int	*input_arguments(char **args, size_t len)
+{
+	int		*nums;
+
+	if (len == 1)
+		nums = input_single_string(args[0]);
+	else
+		nums = input_multiple_string(args, len);
+	return (nums);
 }

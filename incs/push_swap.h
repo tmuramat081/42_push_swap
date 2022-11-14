@@ -43,6 +43,7 @@ void	evalatoruate_cost(t_node *node, t_vector *dp_tab);
 bool	is_valid_operation(t_node *node, t_operation op);
 size_t	hash_node(const void *node);
 t_node	*copy_node(const t_node *src);
+void	execute_greedy_push_operation(t_node *node);
 
 // ********** Evaluator ********** //
 size_t	evaluator(t_node *node);
@@ -50,15 +51,15 @@ size_t	evaluate_lic(t_deque *stack);
 void	clear_lic_tags(t_deque *stack);
 void	put_on_lic_tags(t_vector *res);
 size_t	evaluate_min_swaps(t_node *node);
-
+void	*get_min_element(t_deque *stack);
+void	*get_max_element(t_deque *stack);
 void	init_dp_table(t_tab *dp_tab, size_t size);
 void	clear_dp_table(t_tab *dp_tab);
 void	delete_dp_table(t_tab *dp_tab);
-
+int		get_circular_index(size_t i, size_t len);
 // ********** checker ********** //
 bool	checker(t_node *node);
 int		priority_comparator(const void *ptr1, const void *ptr2);
-
 
 // ********** Node utils ********** //
 void	delete_node(void *ptr);

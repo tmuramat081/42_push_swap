@@ -13,6 +13,7 @@
 #include <limits.h>
 #include "push_swap.h"
 
+/** Convert string to int value, using strtol function. */
 int	convert_str_to_int(char *str)
 {
 	char	*end_ptr;

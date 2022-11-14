@@ -50,6 +50,14 @@ void	print_operation(void	*ptr)
 	return ;
 }
 
+void	exec_repeated_operation(t_node *node, t_operation op, size_t n)
+{
+	while (n--)
+	{
+		g_op_exec[op](node);
+	}
+}
+
 void	exec_operation(t_node *node, t_operation op)
 {
 	g_op_exec[op](node);

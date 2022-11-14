@@ -6,7 +6,7 @@
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 22:46:05 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/11/12 23:21:55 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/11/13 14:40:00 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_node		t_node;
 typedef struct s_tab		t_tab;
 typedef struct s_data		t_data;
 typedef struct s_solver		t_solver;
+typedef struct s_pair		t_pair;
 typedef size_t				(*t_eval)(t_node *);
 typedef bool				(*t_check)(t_node *);
 
@@ -60,6 +61,11 @@ struct s_tab {
 struct s_data {
 	int		value;
 	bool	is_sorted;
+};
+
+struct s_pair {
+	int	a;
+	int	b;
 };
 
 struct s_solver {

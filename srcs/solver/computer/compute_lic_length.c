@@ -12,6 +12,20 @@
 
 #include "push_swap.h"
 
+void	clear_lic_tags(t_deque *stack)
+{
+	t_data	*itr;
+	size_t	len;
+
+	itr = ft_deque_front(stack);
+	len = ft_deque_size(stack);
+	while (len--)
+	{
+		itr->is_sorted = false;
+		itr = ft_deque_next(stack, itr, 1);
+	}
+}
+
 static void	dp_construct_lic(t_deque *stack, t_data *start, t_tab *dp_tab)
 {
 	int		*idx;
@@ -68,22 +82,6 @@ static void	dp_calculate_lic(t_deque *stack, t_data *start, t_tab *dp_tab)
 	}
 }
 
-static void	*search_min_element(t_deque *stack)
-{
-	size_t	len;
-	t_data	*itr;
-
-	len = ft_deque_size(stack);
-	itr = ft_deque_front(stack);
-	while (len--)
-	{
-		if (itr->value == 0)
-			break ;
-		itr = ft_deque_next(stack, itr, 1);
-	}
-	return (itr);
-}
-
 size_t	evaluate_lic(t_deque *stack)
 {
 	t_tab	dp_table;
@@ -92,7 +90,7 @@ size_t	evaluate_lic(t_deque *stack)
 
 	clear_lic_tags(stack);
 	init_dp_table(&dp_table, stack->len);
-	itr = search_min_element(stack);
+	itr = get_min_element(stack);
 	dp_calculate_lic(stack, itr, &dp_table);
 	dp_construct_lic(stack, itr, &dp_table);
 	lic_length = ft_vector_size(dp_table.val);

@@ -57,17 +57,22 @@ void	push_unsorted_elems_to_b(t_node *node)
 		{
 			exec_operation(node, OP_PA);
 			len_unsorted--;
-			print_node(node);
 		}
+		print_node(node);
 		exec_operation(node, OP_RA);
 	}
 }
 
 void	push_sorted_elems_to_a(t_node *node)
 {
-	node = search_opt_operations(node, &g_dataset);
-	if (!node)
-		exit(0);
+	size_t	len;
+
+	len = ft_deque_size(node->stack_b);
+	while (len--)
+	{
+		execute_greedy_push_operation(node);
+		print_node(node);
+	}
 }
 
 void	solve_push_swap_problem(int *nums, size_t size)
@@ -77,7 +82,6 @@ void	solve_push_swap_problem(int *nums, size_t size)
 	node = init_first_node(nums, size);
 	push_unsorted_elems_to_b(node);
 	push_sorted_elems_to_a(node);
-	exit(0);
 	rotate_elems_of_a(node);
 	put_answer(node->operations);
 	delete_node(node);

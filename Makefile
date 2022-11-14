@@ -16,16 +16,16 @@ SRCS := main.c \
 		solver/search_routine.c \
 		solver/handle_node.c \
 		solver/evaluate_node.c \
-		solver/prune.c \
 		solver/copy_node.c \
+		solver/dataset/prune.c \
 		solver/dataset/hash.c \
 		solver/dataset/comparator.c \
 		solver/dataset/checker.c \
 		solver/dataset/evaluator.c \
-		evaluator/compute_lic.c \
-		evaluator/compute_min_swap.c \
-		evaluator/dp_table.c \
-		evaluator/utils.c \
+		solver/computer/compute_lic_length.c \
+		solver/computer/compute_min_swap.c \
+		solver/computer/dp_table.c \
+		solver/computer/utils.c \
 		operation/op_push.c \
 		operation/op_swap.c \
 		operation/op_rotate.c \

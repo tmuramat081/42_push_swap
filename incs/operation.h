@@ -6,7 +6,7 @@
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:00:50 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/11/14 23:49:58 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/11/15 21:38:46 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	op_rrb(t_node *node);
 void	op_ss(t_node *node);
 void	op_rr(t_node *node);
 void	op_rrr(t_node *node);
-void	print_operation(void	*ptr);
 void	exec_operation(t_node *node, t_operation op);
 void	exec_repeated_operation(t_node *node, t_operation op, size_t n);
+void	print_operation(void	*ptr);
 
 #endif

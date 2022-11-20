@@ -35,10 +35,10 @@ static int	calculate_insert_swaps(t_node *node, int target)
 		itr_a = ft_deque_next(node->stack_a, itr_a, 1);
 		i++;
 	}
-	return (
-		get_circular_index(
-			(t_data *)get_max_element(node->stack_a) - top_a, len_a)
-	);
+	size_t max_i = max_element_index(node->stack_a) + 1;
+	if (max_i == len_a)
+		max_i = 0;
+	return (get_circular_index(max_i, len_a));
 }
 
 t_pair	get_min_distance(t_pair	*dist_table, size_t len)
@@ -83,7 +83,6 @@ t_pair	evaluate_min_swap_distance(t_node *node, t_pair *dist_table)
 void	execute_opt_operations(t_node *node, t_pair min_dist)
 {
 	size_t		exec_times;
-	t_operation	op;
 
 	if (min_dist.a > 0 && min_dist.b > 0)
 	{
@@ -92,7 +91,7 @@ void	execute_opt_operations(t_node *node, t_pair min_dist)
 		min_dist.a -= exec_times;
 		min_dist.b -= exec_times;
 	}
-	else if (min_dist.b < 0 && min_dist.b < 0)
+	else if (min_dist.a < 0 && min_dist.b < 0)
 	{
 		exec_times = ft_abs(ft_max(min_dist.a, min_dist.b));
 		exec_repeated_operation(node, OP_RRR, exec_times);
@@ -100,14 +99,14 @@ void	execute_opt_operations(t_node *node, t_pair min_dist)
 		min_dist.b += exec_times;
 	}
 	if (min_dist.a > 0)
-		exec_repeated_operation(node, OP_RA, exec_times);
+		exec_repeated_operation(node, OP_RA, min_dist.a);
 	else if (min_dist.a < 0)
-		exec_repeated_operation(node, OP_RRA, exec_times);
+		exec_repeated_operation(node, OP_RRA, ft_abs(min_dist.a));
 	if (min_dist.b > 0)
-		exec_repeated_operation(node, OP_RB, exec_times);
+		exec_repeated_operation(node, OP_RB, min_dist.b);
 	else if (min_dist.b < 0)
-		exec_repeated_operation(node, OP_RRB, exec_times);
-	exec_operation(node, OP_PB);
+		exec_repeated_operation(node, OP_RRB, ft_abs(min_dist.b));
+	exec_operation(node, OP_PA);
 }
 
 void	execute_greedy_push_operation(t_node *node)

@@ -90,7 +90,7 @@ size_t	evaluate_lic(t_deque *stack)
 
 	clear_lic_tags(stack);
 	init_dp_table(&dp_table, stack->len);
-	itr = get_min_element(stack);
+	itr = min_element(stack);
 	dp_calculate_lic(stack, itr, &dp_table);
 	dp_construct_lic(stack, itr, &dp_table);
 	lic_length = ft_vector_size(dp_table.val);

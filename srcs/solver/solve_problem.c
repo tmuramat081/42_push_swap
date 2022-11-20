@@ -47,28 +47,22 @@ bool	is_sorted(t_node *node)
 void	push_unsorted_elems_to_b(t_node *node)
 {
 	t_data			*top_a;
-	int				len_unsorted;
 
-	len_unsorted = ft_deque_size(node->stack_a) - evaluate_lic(node->stack_a);
-	while (len_unsorted)
+	while (ft_deque_size(node->stack_a) != evaluate_lic(node->stack_a))
 	{
 		top_a = ft_deque_front(node->stack_a);
 		if (top_a->is_sorted == false)
 		{
-			exec_operation(node, OP_PA);
-			len_unsorted--;
+			exec_operation(node, OP_PB);
 		}
-		print_node(node);
 		exec_operation(node, OP_RA);
+		print_node(node);
 	}
 }
 
 void	push_sorted_elems_to_a(t_node *node)
 {
-	size_t	len;
-
-	len = ft_deque_size(node->stack_b);
-	while (len--)
+	while (!ft_deque_is_empty(node->stack_b))
 	{
 		execute_greedy_push_operation(node);
 		print_node(node);

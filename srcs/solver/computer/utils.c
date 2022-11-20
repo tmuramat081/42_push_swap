@@ -14,12 +14,14 @@
 
 int	get_circular_index(size_t i, size_t len)
 {
+	if (i == 0)
+		return (0);
 	if (i >= len / 2)
 		return ((int)i - (int)len);
 	return ((int)i);
 }
 
-void	*get_min_element(t_deque *stack)
+void	*min_element(t_deque *stack)
 {
 	size_t	len;
 	t_data	*itr;
@@ -41,7 +43,32 @@ void	*get_min_element(t_deque *stack)
 	return (min_elem);
 }
 
-void	*get_max_element(t_deque *stack)
+size_t	max_element_index(t_deque *stack)
+{
+	size_t	len;
+	t_data	*itr;
+	int		max_value;
+	size_t	max_i;
+	size_t	i;
+
+	max_value = INT_MIN;
+	len = ft_deque_size(stack);
+	itr = ft_deque_front(stack);
+	i = 0;
+	while (i < len)
+	{
+		if (max_value < itr->value)
+		{
+			max_value = itr->value;
+			max_i = i;
+		}
+		i++;
+		itr = ft_deque_next(stack, itr, 1);
+	}
+	return (max_i);
+}
+
+void	*max_element(t_deque *stack)
 {
 	size_t	len;
 	t_data	*itr;

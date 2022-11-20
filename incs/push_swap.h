@@ -51,8 +51,8 @@ size_t	evaluate_lic(t_deque *stack);
 void	clear_lic_tags(t_deque *stack);
 void	put_on_lic_tags(t_vector *res);
 size_t	evaluate_min_swaps(t_node *node);
-void	*get_min_element(t_deque *stack);
-void	*get_max_element(t_deque *stack);
+void	*min_element(t_deque *stack);
+void	*max_element(t_deque *stack);
 void	init_dp_table(t_tab *dp_tab, size_t size);
 void	clear_dp_table(t_tab *dp_tab);
 void	delete_dp_table(t_tab *dp_tab);
@@ -67,5 +67,6 @@ void	hundle_error(t_node *node);
 void	print_node(t_node *node);
 void	*deque_circular_next(t_deque *stack, void *i);
 void	*deque_circular_prev(t_deque *stack, void *i);
+size_t	max_element_index(t_deque *stack);
 
 #endif

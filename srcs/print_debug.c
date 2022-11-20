@@ -67,7 +67,7 @@ void	print_node(t_node *node)
 	print_two_stacks(node->stack_a, node->stack_b);
 	ft_printf("lic:%d\n", node->lic_a);
 	ft_printf("----operation----\n");
-//	put_answer(node->operations);
+	put_answer(node->operations);
 	ft_printf("result:%d\n", node->operations->len);
 	ft_printf("---cost(f=g+h)---\n");
 	ft_printf("%s", ULINE);
@@ -76,7 +76,7 @@ void	print_node(t_node *node)
 	ft_printf("g(actual):%d\n", node->operations->len);
 	ft_printf("h(expected):%d\n", node->cost - node->operations->len);
 	ft_printf("\n");
-//	usleep(1000000);
+	usleep(100000);
 }
 #else
 

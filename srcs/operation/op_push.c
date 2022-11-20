@@ -6,7 +6,7 @@
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 01:01:35 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/11/08 23:21:44 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/11/15 23:36:13 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ static void	stack_push(t_deque *stack1, t_deque *stack2)
 
 void	op_pa(t_node *node)
 {
-	stack_push(node->stack_a, node->stack_b);
+	stack_push(node->stack_b, node->stack_a);
 	if (!ft_vector_push_back(node->operations, &(t_operation){OP_PA}))
 		exit(EXIT_FAILURE);
 }
 
 void	op_pb(t_node *node)
 {
-	stack_push(node->stack_b, node->stack_a);
+	stack_push(node->stack_a, node->stack_b);
 	if (!ft_vector_push_back(node->operations, &(t_operation){OP_PB}))
 		exit(EXIT_FAILURE);
 }

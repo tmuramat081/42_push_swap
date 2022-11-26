@@ -139,7 +139,7 @@ dev: clean
 git:
 	git add .
 	git commit
-	git push
+	git push origin feature
 
 #: Display all commands.
 help:

@@ -4,6 +4,20 @@
 ## What is this ?
 Demonstration of sorting algorithm, using only 2 stacks and 11 operations.
 
+| instructions  | Description   |
+|:-------------:|---------------|
+| sa            | swap first two elements of stack A |
+| sb            | swap first two elements of stack B |
+| ss            | sa and sb at the same time |
+| pa            | pops the first elememt on B and puts it on top of A |
+| pb            | pops the first elememt on A and puts it on top of B |
+| ra            | rotates stuck A up by one|
+| rb            | rotates stuck B up by one |
+| rr            | rotates both A and B up by one |
+| rra           | rotates stuck A down by one |
+| rrb           | rotates stuck B down by one |
+| rrr           | rotates both A and B down by one |
+
 ## Installation
 
 Please clone this repository as follows
@@ -31,14 +45,14 @@ make dev
 - Graph Search(A* search)
 
 ### Data structure
-- Deque
+- Deque 
 https://github.com/tmuramat081/deque
-- Stack(vector)
+- Stack(vector) 
 https://github.com/tmuramat081/vector
-- Hashset
-https://github.com/tmuramat081/hashset
-- priority_queue
+- priority_queue 
 https://github.com/tmuramat081/priority_queue
+- Hashset 
+https://github.com/tmuramat081/hashset
 
 ## Authors
 Taisei Muramatsu (tmuramat, 42 Tokyo)

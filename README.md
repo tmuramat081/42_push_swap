@@ -48,10 +48,10 @@ make dev
 - Deque  
 
 https://github.com/tmuramat081/deque  
-- Stack(vector) 
+- Vector(i.e. Stack) 
 
 https://github.com/tmuramat081/vector　　
-- priority_queue 
+- Priority queue 
 
 https://github.com/tmuramat081/priority_queue  
 - Hashset 
@@ -60,7 +60,8 @@ https://github.com/tmuramat081/hashset
 
 
 ## Thanks
-Thanks for all the student, staff, sponser of 42 Tokyo!
+Thanks for all the student, staff, sponser of 42 Tokyo!　　
+
 https://42tokyo.jp/
 
 ## Authors

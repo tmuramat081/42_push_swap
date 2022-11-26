@@ -23,8 +23,22 @@ make dev
 ```
 
 ## Thecnical issues
+### Algorithm
 - Insertion sort
 - Longest Increasing Subsequence(LIS)
 - Dynamic Programming(DP)
+- Greedy Algorithm
+- Graph Search(A* search)
 
-- Graph Search(Greedy, A* Algorithm)
+### Data structure
+- Deque
+https://github.com/tmuramat081/deque
+- Stack(vector)
+https://github.com/tmuramat081/vector
+- Hashset
+https://github.com/tmuramat081/hashset
+- priority_queue
+https://github.com/tmuramat081/priority_queue
+
+## Authors
+Taisei Muramatsu (tmuramat, 42 Tokyo)

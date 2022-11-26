@@ -1,9 +1,10 @@
 # Compile variables
 NAME := push_swap
+NAME_DEV := push_swap_dev
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror
 ifdef FOR_DEBUG
-NAME := push_swap_dev
+NAME := NAME_DEV
 CFLAGS += -g -w -D FOR_DEBUG
 endif
 
@@ -17,11 +18,12 @@ SRCS := main.c \
 		solver/handle_node.c \
 		solver/evaluate_node.c \
 		solver/copy_node.c \
-		solver/dataset/prune.c \
-		solver/dataset/hash.c \
-		solver/dataset/comparator.c \
-		solver/dataset/checker.c \
-		solver/dataset/evaluator.c \
+		solver/callbacks/prune.c \
+		solver/callbacks/hash.c \
+		solver/callbacks/comparator.c \
+		solver/callbacks/checker.c \
+		solver/callbacks/evaluator.c \
+		solver/callbacks/dataset.c \
 		solver/computer/compute_lic_length.c \
 		solver/computer/compute_min_swap.c \
 		solver/computer/dp_table.c \
@@ -31,7 +33,7 @@ SRCS := main.c \
 		operation/op_rotate.c \
 		operation/op_rev_rotate.c \
 		operation/operations.c \
-		print_debug.c
+		debug/print_node.c
 
 OBJS_DIR := objs/
 OBJS := ${addprefix ${OBJS_DIR},${SRCS:.c=.o}}
@@ -118,6 +120,7 @@ clean:
 #: Remove all object and executable files.
 fclean:	clean
 	${RM} ${NAME}
+	${RM} ${NAME_DEV}
 	${RM} ${LIBFT}
 	${RM} ${LIBDEQUE}
 	${RM} ${LIBVECTOR}

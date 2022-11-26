@@ -82,7 +82,7 @@ static void	dp_calculate_lic(t_deque *stack, t_data *start, t_tab *dp_tab)
 	}
 }
 
-size_t	evaluate_lic(t_deque *stack)
+size_t	evaluate_lic_length(t_deque *stack)
 {
 	t_tab	dp_table;
 	t_data	*itr;

@@ -14,5 +14,5 @@
 
 void	put_answer(t_vector *operations)
 {
-	ft_vector_foreach(operations, &print_operation);
+	ft_vector_foreach(operations, print_operation);
 }

@@ -25,6 +25,8 @@
 # include "ft_pqueue.h"
 # include "ft_hashset.h"
 
+extern const t_solver	g_dataset;
+
 // ********** Main solver ********** //
 int		*input_arguments(char **args, size_t n);
 void	format_numbers(int **arr_src, size_t n);
@@ -47,7 +49,7 @@ void	execute_greedy_push_operation(t_node *node);
 
 // ********** Evaluator ********** //
 size_t	evaluator(t_node *node);
-size_t	evaluate_lic(t_deque *stack);
+size_t	evaluate_lic_length(t_deque *stack);
 void	clear_lic_tags(t_deque *stack);
 void	put_on_lic_tags(t_vector *res);
 size_t	evaluate_min_swaps(t_node *node);

@@ -6,7 +6,7 @@
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 09:13:42 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/11/10 00:35:33 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/11/26 10:50:23 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	stack_swap(t_deque *stack)
 		return ;
 	itr_1 = ft_deque_front(stack);
 	itr_2 = ft_deque_next(stack, itr_1, 1);
-	ft_memswap(itr_1, itr_2, sizeof(int));
+	ft_memswap(itr_1, itr_2, sizeof(t_data));
 }
 
 void	op_sa(t_node *node)

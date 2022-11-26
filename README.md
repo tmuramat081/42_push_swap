@@ -2,7 +2,7 @@
 <img width="295" alt="スクリーンショット 2022-11-26 17 05 24" src="https://user-images.githubusercontent.com/91453112/204078986-2c3e34c4-926b-4e83-8d34-dd547b156904.png">
 
 ## What is this ?
-Demonstration of sorting algorithm, using only 2 stacks and 11 operations.
+A demonstration of sorting algorithm, using only 2 stacks and 11 instructions.
 
 | instructions  | Description   |
 |:-------------:|---------------|
@@ -46,13 +46,13 @@ make dev
 
 ### Data structure
 - Deque 
-https://github.com/tmuramat081/deque
+https://github.com/tmuramat081/deque  
 - Stack(vector) 
-https://github.com/tmuramat081/vector
+https://github.com/tmuramat081/vector　　
 - priority_queue 
-https://github.com/tmuramat081/priority_queue
+https://github.com/tmuramat081/priority_queue  
 - Hashset 
-https://github.com/tmuramat081/hashset
+https://github.com/tmuramat081/hashset  
 
 ## Authors
 Taisei Muramatsu (tmuramat, 42 Tokyo)

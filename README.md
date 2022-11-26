@@ -54,7 +54,7 @@ With debug mode, you can check the process of graph search.
 https://github.com/tmuramat081/deque  
 - Vector(i.e. Stack) 
 
-https://github.com/tmuramat081/vector　　
+https://github.com/tmuramat081/vector  
 - Priority queue 
 
 https://github.com/tmuramat081/priority_queue  

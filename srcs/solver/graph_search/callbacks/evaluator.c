@@ -21,5 +21,5 @@ size_t	evaluator(t_node *node)
 	node->lic_a = calculate_lic_length(node->stack_a);
 	cost_h = node->size - node->lic_a;
 	cost_g = ft_vector_size(node->operations);
-	return (cost_g + (double)cost_h * 1.0);
+	return (cost_g + (double)cost_h * 1.5);
 }

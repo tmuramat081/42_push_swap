@@ -6,7 +6,7 @@
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 22:46:05 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/11/26 12:44:37 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/11/26 14:26:17 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ struct s_solver {
 	t_operation	operations[OP_END + 1];
 	t_eval		evaluator;
 	t_check		checker;
-	size_t		search_width;
 };
 
 #endif

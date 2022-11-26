@@ -26,29 +26,12 @@ static t_node	*update_node(t_node *node, t_pqueue *open, t_hashset *closed)
 	return (new_node);
 }
 
-static void	select_next_node(t_pqueue *tmp_open, t_pqueue *open, size_t n)
-{
-	t_node	*node;
-	size_t	i;
-
-	i = 0;
-	while (i < (size_t)ft_min(n, ft_priority_queue_size(tmp_open)))
-	{
-		node = ft_priority_queue_pop(tmp_open);
-		if (!ft_priority_queue_push(open, node))
-			exit(EXIT_FAILURE);
-		i++;
-	}
-}
-
 static void	expand_nodes(t_node *node, t_pqueue *open, t_hashset *closed,
 			const t_solver *solver)
 {
 	t_node		*tmp_node;
-	t_pqueue	*tmp_open;
 	size_t		i;
 
-	tmp_open = ft_priority_queue_init(OP_END, &priority_comparator);
 	i = 0;
 	while (solver->operations[i] < OP_END)
 	{
@@ -56,12 +39,10 @@ static void	expand_nodes(t_node *node, t_pqueue *open, t_hashset *closed,
 		{
 			tmp_node = copy_node(node);
 			exec_operation(tmp_node, solver->operations[i]);
-			evaluate_next_node(tmp_node, tmp_open, closed, solver->evaluator);
+			evaluate_next_node(tmp_node, open, closed, solver->evaluator);
 		}
 		i++;
 	}
-	select_next_node(tmp_open, open, solver->search_width);
-	ft_priority_queue_delete(&tmp_open, delete_node);
 }
 
 t_node	*search_opt_operations(t_node *first_node, const t_solver *solver)

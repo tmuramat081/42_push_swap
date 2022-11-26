@@ -124,7 +124,6 @@ clean:
 #: Remove all object and executable files.
 fclean:	clean
 	${RM} ${NAME}
-	${RM} ${NAME_DEV}
 	${RM} ${LIBFT}
 	${RM} ${LIBDEQUE}
 	${RM} ${LIBVECTOR}

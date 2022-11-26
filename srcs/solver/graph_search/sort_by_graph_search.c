@@ -6,7 +6,7 @@
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 11:44:41 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/11/26 14:18:42 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/11/26 14:26:12 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ const t_solver	g_dataset = {
 	OP_RB, OP_RR, OP_RRA, OP_RRB, OP_RRR, OP_END},
 	.evaluator = evaluator,
 	.checker = checker,
-	.search_width = 12,
 };
 
 void	sort_by_graph_search(t_node **node)

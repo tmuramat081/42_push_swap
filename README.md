@@ -45,14 +45,23 @@ make dev
 - Graph Search(A* search)
 
 ### Data structure
-- Deque 
+- Deque  
+
 https://github.com/tmuramat081/deque  
 - Stack(vector) 
+
 https://github.com/tmuramat081/vector　　
 - priority_queue 
+
 https://github.com/tmuramat081/priority_queue  
 - Hashset 
+
 https://github.com/tmuramat081/hashset  
+
+
+## Thanks
+Thanks for all the student, staff, sponser of 42 Tokyo!
+https://42tokyo.jp/
 
 ## Authors
 Taisei Muramatsu (tmuramat, 42 Tokyo)

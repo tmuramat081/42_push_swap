@@ -43,53 +43,6 @@ void	*min_element(t_deque *stack)
 	return (min_elem);
 }
 
-size_t	max_element_index(t_deque *stack)
-{
-	size_t	len;
-	t_data	*itr;
-	int		max_value;
-	size_t	max_i;
-	size_t	i;
-
-	max_value = INT_MIN;
-	len = ft_deque_size(stack);
-	itr = ft_deque_front(stack);
-	i = 0;
-	while (i < len)
-	{
-		if (max_value < itr->value)
-		{
-			max_value = itr->value;
-			max_i = i;
-		}
-		i++;
-		itr = ft_deque_next(stack, itr, 1);
-	}
-	return (max_i);
-}
-
-void	*max_element(t_deque *stack)
-{
-	size_t	len;
-	t_data	*itr;
-	int		max_value;
-	t_data	*max_elem;
-
-	max_value = INT_MIN;
-	len = ft_deque_size(stack);
-	itr = ft_deque_front(stack);
-	while (len--)
-	{
-		if (max_value < itr->value)
-		{
-			max_value = itr->value;
-			max_elem = itr;
-		}
-		itr = ft_deque_next(stack, itr, 1);
-	}
-	return (max_elem);
-}
-
 void	*deque_circular_prev(t_deque *stack, void *itr)
 {
 	if (itr == stack->begin)

@@ -12,6 +12,33 @@
 
 #include "push_swap.h"
 
+static size_t	max_element_index(t_deque *stack)
+{
+	size_t	len;
+	t_data	*itr;
+	int		max_value;
+	size_t	max_i;
+	size_t	i;
+
+	max_value = INT_MIN;
+	len = ft_deque_size(stack);
+	itr = ft_deque_front(stack);
+	i = 0;
+	while (i < len)
+	{
+		if (max_value < itr->value)
+		{
+			max_value = itr->value;
+			max_i = i;
+		}
+		itr = ft_deque_next(stack, itr, 1);
+		i++;
+	}
+	if (max_i == len)
+		return (0);
+	return (max_i);
+}
+
 static int	calculate_insert_swaps(t_node *node, int target)
 {
 	t_data	*top_a;
@@ -35,10 +62,7 @@ static int	calculate_insert_swaps(t_node *node, int target)
 		itr_a = ft_deque_next(node->stack_a, itr_a, 1);
 		i++;
 	}
-	size_t max_i = max_element_index(node->stack_a) + 1;
-	if (max_i == len_a)
-		max_i = 0;
-	return (get_circular_index(max_i, len_a));
+	return (get_circular_index(max_element_index(node->stack_a) + 1, len_a));
 }
 
 t_pair	get_min_distance(t_pair	*dist_table, size_t len)
@@ -61,7 +85,7 @@ t_pair	get_min_distance(t_pair	*dist_table, size_t len)
 	return (min_swap_dist);
 }
 
-t_pair	evaluate_min_swap_distance(t_node *node, t_pair *dist_table)
+t_pair	evaluate_min_distances(t_node *node, t_pair *dist_table)
 {
 	size_t	len_b;
 	t_data	*itr_b;
@@ -80,36 +104,7 @@ t_pair	evaluate_min_swap_distance(t_node *node, t_pair *dist_table)
 	return (get_min_distance(dist_table, len_b));
 }
 
-void	execute_opt_operations(t_node *node, t_pair min_dist)
-{
-	size_t		exec_times;
-
-	if (min_dist.a > 0 && min_dist.b > 0)
-	{
-		exec_times = ft_min(min_dist.a, min_dist.b);
-		exec_repeated_operation(node, OP_RR, exec_times);
-		min_dist.a -= exec_times;
-		min_dist.b -= exec_times;
-	}
-	else if (min_dist.a < 0 && min_dist.b < 0)
-	{
-		exec_times = ft_abs(ft_max(min_dist.a, min_dist.b));
-		exec_repeated_operation(node, OP_RRR, exec_times);
-		min_dist.a += exec_times;
-		min_dist.b += exec_times;
-	}
-	if (min_dist.a > 0)
-		exec_repeated_operation(node, OP_RA, min_dist.a);
-	else if (min_dist.a < 0)
-		exec_repeated_operation(node, OP_RRA, ft_abs(min_dist.a));
-	if (min_dist.b > 0)
-		exec_repeated_operation(node, OP_RB, min_dist.b);
-	else if (min_dist.b < 0)
-		exec_repeated_operation(node, OP_RRB, ft_abs(min_dist.b));
-	exec_operation(node, OP_PA);
-}
-
-void	execute_greedy_push_operation(t_node *node)
+t_pair	calculate_min_insert_distance(t_node *node)
 {
 	size_t	len_b;
 	t_pair	*dist_table;
@@ -117,7 +112,7 @@ void	execute_greedy_push_operation(t_node *node)
 
 	len_b = ft_deque_size(node->stack_b);
 	dist_table = (t_pair *)ft_xmalloc(sizeof(t_pair) * len_b);
-	min_dist = evaluate_min_swap_distance(node, dist_table);
+	min_dist = evaluate_min_distances(node, dist_table);
 	free(dist_table);
-	execute_opt_operations(node, min_dist);
+	return (min_dist);
 }

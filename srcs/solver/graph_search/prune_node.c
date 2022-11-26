@@ -17,13 +17,13 @@ static bool	is_empty_operation(t_node *node, t_operation next)
 {
 	if (ft_deque_is_empty(node->stack_a) == true)
 	{
-		if (next == OP_SA || next == OP_PA || next == OP_RA || next == OP_RRA
+		if (next == OP_SA || next == OP_PB || next == OP_RA || next == OP_RRA
 			|| next == OP_SS || next == OP_RR || next == OP_RRR)
 			return (true);
 	}
 	else if (ft_deque_is_empty(node->stack_b) == true)
 	{
-		if (next == OP_SB || next == OP_PB || next == OP_RB || next == OP_RRB
+		if (next == OP_SB || next == OP_PA || next == OP_RB || next == OP_RRB
 			|| next == OP_SS || next == OP_RR || next == OP_RRR)
 			return (true);
 	}
@@ -71,7 +71,7 @@ static bool	is_locked_operation(t_node *node, t_operation next)
 	top_a = ft_deque_front(node->stack_a);
 	if (top_a->is_sorted == true)
 	{
-		if (next == OP_PA || next == OP_SA)
+		if (next == OP_PB)
 			return (true);
 	}
 	return (false);

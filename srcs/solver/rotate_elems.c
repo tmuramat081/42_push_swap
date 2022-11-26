@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dataset.c                                          :+:      :+:    :+:   */
+/*   rotate_elems.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 01:45:31 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/11/22 06:54:01 by tmuramat         ###   ########.fr       */
+/*   Created: 2022/11/26 12:00:08 by tmuramat          #+#    #+#             */
+/*   Updated: 2022/11/26 12:03:55 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-const t_solver	g_dataset = {
-	.operations = {OP_PA, OP_PB, OP_SA, OP_SB, OP_SS, OP_RA,
-	OP_RB, OP_RR, OP_RRA, OP_RRB, OP_RRR, OP_END},
-	.evaluator = evaluator,
-	.checker = checker,
-	.search_width = 4,
-};
+void	rotate_elems(t_deque *stack, t_node *node)
+{
+	t_data		*top;
+	t_operation	op;
+
+	top = ft_deque_front(stack);
+	if (node->size / 2 >= (size_t)top->value)
+		op = OP_RRA;
+	else
+		op = OP_RA;
+	while (top->value != 0)
+	{
+		exec_operation(node, op);
+		top = ft_deque_front(node->stack_a);
+	}
+}

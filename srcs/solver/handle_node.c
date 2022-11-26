@@ -6,7 +6,7 @@
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 22:19:24 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/11/12 23:22:35 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/11/26 10:57:20 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,6 @@
 #include "ft_printf.h"
 
 #define OPERATION_SIZE 64
-#define ERR_MSG "invalid arguments.\n"
-
-void	hundle_error(t_node *node)
-{
-	if (node)
-		delete_node(node);
-	ft_printf(ERR_MSG);
-	exit(EXIT_FAILURE);
-}
 
 void	delete_node(void *ptr)
 {

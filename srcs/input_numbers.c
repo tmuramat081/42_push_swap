@@ -22,9 +22,9 @@ int	convert_str_to_int(char *str)
 	end_ptr = NULL;
 	long_num = ft_strtol_d(str, &end_ptr);
 	if (long_num < INT_MIN || INT_MAX < long_num)
-		hundle_error(NULL);
+		common_hundle_error(NULL);
 	else if (*end_ptr || end_ptr == str)
-		hundle_error(NULL);
+		common_hundle_error(NULL);
 	return ((int)long_num);
 }
 

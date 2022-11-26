@@ -62,10 +62,10 @@ void	format_numbers(int **src_nums, size_t n)
 
 	cpy_nums = ft_arraydup(*src_nums, n);
 	if (!cpy_nums)
-		hundle_error(NULL);
+		common_hundle_error(NULL);
 	ft_qsort(cpy_nums, n, sizeof(int), cmp_ascending);
 	if (is_array_unique(cpy_nums, n) == false)
-		hundle_error(NULL);
+		common_hundle_error(NULL);
 	dst_nums = coord_compression(*src_nums, cpy_nums, n);
 	free(*src_nums);
 	free(cpy_nums);

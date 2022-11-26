@@ -70,7 +70,7 @@ t_node	*search_opt_operations(t_node *first_node, const t_solver *solver)
 	t_hashset	*closed;
 	t_node		*node;
 
-	open = ft_priority_queue_init(INIT_CAPACITY, &priority_comparator);
+	open = ft_priority_queue_init(INIT_CAPACITY, priority_comparator);
 	closed = ft_hashset_init(&hash_node);
 	evaluate_first_node(first_node, open, closed, solver->evaluator);
 	while (ft_priority_queue_is_empty(open) == false)

@@ -1,10 +1,9 @@
 # Compile variables
 NAME := push_swap
-NAME_DEV := push_swap_dev
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror
 ifdef FOR_DEBUG
-NAME := NAME_DEV
+NAME := push_swap_dev
 CFLAGS += -g -w -D FOR_DEBUG
 endif
 
@@ -14,25 +13,30 @@ SRCS := main.c \
 		format_numbers.c \
 		solver/solve_problem.c \
 		solver/put_answer.c \
-		solver/search_routine.c \
 		solver/handle_node.c \
-		solver/evaluate_node.c \
-		solver/copy_node.c \
-		solver/callbacks/prune.c \
-		solver/callbacks/hash.c \
-		solver/callbacks/comparator.c \
-		solver/callbacks/checker.c \
-		solver/callbacks/evaluator.c \
-		solver/callbacks/dataset.c \
-		solver/computer/compute_lic_length.c \
-		solver/computer/compute_min_swap.c \
-		solver/computer/dp_table.c \
-		solver/computer/utils.c \
+		solver/rotate_elems.c \
+		solver/insertion/sort_by_insertion.c \
+		solver/insertion/calculate_insert_distance.c \
+		solver/insertion/execute_greedy_operations.c \
+		solver/graph_search/sort_by_graph_search.c \
+		solver/graph_search/search_routine.c \
+		solver/graph_search/evaluate_node.c \
+		solver/graph_search/copy_node.c \
+		solver/graph_search/prune_node.c \
+		solver/graph_search/callbacks/hash.c \
+		solver/graph_search/callbacks/comparator.c \
+		solver/graph_search/callbacks/checker.c \
+		solver/graph_search/callbacks/evaluator.c \
+		solver/graph_search/callbacks/dataset.c \
+		solver/lic/calculate_lic_length.c \
+		solver/lic/dp_table.c \
+		solver/lic/utils.c \
 		operation/op_push.c \
 		operation/op_swap.c \
 		operation/op_rotate.c \
 		operation/op_rev_rotate.c \
 		operation/operations.c \
+		common/handle_error.c \
 		debug/print_node.c
 
 OBJS_DIR := objs/

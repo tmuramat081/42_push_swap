@@ -1,5 +1,5 @@
 # 42_push_swap
---Because Swap_push isn’t as natural  
+*--Because Swap_push isn’t as natural*  
   
 <img width="295" alt="スクリーンショット 2022-11-26 17 05 24" src="https://user-images.githubusercontent.com/91453112/204078986-2c3e34c4-926b-4e83-8d34-dd547b156904.png">
 

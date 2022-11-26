@@ -31,7 +31,6 @@ extern const t_solver	g_dataset;
 int		*input_arguments(char **args, size_t n);
 void	format_numbers(int **arr_src, size_t n);
 
-
 // ********** Solver ********** //
 void	solve_push_swap_problem(int *nums, size_t size);
 void	rotate_elems(t_deque *stack, t_node *node);

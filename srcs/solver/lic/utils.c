@@ -12,15 +12,6 @@
 
 #include "push_swap.h"
 
-int	get_circular_index(size_t i, size_t len)
-{
-	if (i == 0)
-		return (0);
-	if (i >= len / 2)
-		return ((int)i - (int)len);
-	return ((int)i);
-}
-
 void	*min_element(t_deque *stack)
 {
 	size_t	len;

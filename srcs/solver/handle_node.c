@@ -6,7 +6,7 @@
 /*   By: tmuramat <tmuramat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 22:19:24 by tmuramat          #+#    #+#             */
-/*   Updated: 2022/11/26 10:57:20 by tmuramat         ###   ########.fr       */
+/*   Updated: 2022/11/26 14:03:51 by tmuramat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	push_input_numbers(t_deque *stack, int *nums, size_t size)
 	}
 }
 
-t_node	*init_first_node(int *nums, size_t size)
+t_node	*init_node(int *nums, size_t size)
 {
 	t_node	*node;
 

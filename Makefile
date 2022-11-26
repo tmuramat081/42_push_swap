@@ -18,6 +18,7 @@ SRCS := main.c \
 		solver/insertion/sort_by_insertion.c \
 		solver/insertion/calculate_insert_distance.c \
 		solver/insertion/execute_greedy_operations.c \
+		solver/insertion/utils.c \
 		solver/graph_search/sort_by_graph_search.c \
 		solver/graph_search/search_routine.c \
 		solver/graph_search/evaluate_node.c \
@@ -27,7 +28,6 @@ SRCS := main.c \
 		solver/graph_search/callbacks/comparator.c \
 		solver/graph_search/callbacks/checker.c \
 		solver/graph_search/callbacks/evaluator.c \
-		solver/graph_search/callbacks/dataset.c \
 		solver/lic/calculate_lic_length.c \
 		solver/lic/dp_table.c \
 		solver/lic/utils.c \
@@ -37,7 +37,7 @@ SRCS := main.c \
 		operation/op_rev_rotate.c \
 		operation/operations.c \
 		common/handle_error.c \
-		debug/print_node.c
+		common/print_debug.c
 
 OBJS_DIR := objs/
 OBJS := ${addprefix ${OBJS_DIR},${SRCS:.c=.o}}

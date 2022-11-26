@@ -17,7 +17,7 @@ void	solve_push_swap_problem(int *nums, size_t size)
 {
 	t_node	*node;
 
-	node = init_first_node(nums, size);
+	node = init_node(nums, size);
 	if (size <= THRESHOLD_SIZE)
 		sort_by_graph_search(&node);
 	else

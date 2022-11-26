@@ -34,9 +34,10 @@ void	format_numbers(int **arr_src, size_t n);
 
 // ********** Solver ********** //
 void	solve_push_swap_problem(int *nums, size_t size);
-void	put_answer(t_vector *operations);
 void	rotate_elems(t_deque *stack, t_node *node);
-t_node	*init_first_node(int *nums, size_t size);
+void	put_answer(t_vector *operations);
+t_node	*init_node(int *nums, size_t size);
+void	delete_node(void *ptr);
 
 // ********** Solver(insertion) ********** //
 void	sort_by_insertion(t_node *node);
@@ -68,8 +69,6 @@ void	*min_element(t_deque *stack);
 bool	checker(t_node *node);
 int		priority_comparator(const void *ptr1, const void *ptr2);
 
-// ********** Node utils ********** //
-void	delete_node(void *ptr);
 void	common_hundle_error(t_node *node);
 void	print_node(t_node *node);
 void	*deque_circular_next(t_deque *stack, void *i);
